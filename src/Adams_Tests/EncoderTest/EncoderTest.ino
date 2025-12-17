@@ -1,38 +1,96 @@
-/*
-This script made by Adam is for checking if the motor encoder is working.
-Connect the wires as described below, open the serial monitor, and twist the encoder by hand.
-The first two numbers show the two hall effect states (0 or 1)
-The third number shows the count
-The count should go up and down as you twist the enocder.
-*/
+const float GR = 297.924;
 
-const int encoderPinB = 2; //purple wire connect to DIGITAL 2
-const int encoderPinA = 3; //blue wire connect to DIGITAL 3
-const int encoderGND = -1; //green wire connect to GND
-const int encoderVCC = -1; //brown wire connect to 5V
-//red wire, do not connect
-//black wire, do not connect
+const int MotorPin = 11;
+const int encoderPinA = 2;
+const int encoderPinB = 3;
 
 volatile long counter = 0;
 int aLastState;
 
+float currentPositionInDegrees;
+float demandPositionInDegrees = -90.0;
+
+float errorPositionInDegrees_prev = 0, errorPositionInDegrees_sum = 0;
+
+float Kp = 50, Kd = 35, Ki = 0;
+
+unsigned long currentTime;
+unsigned long previousTime = 0;
+unsigned long deltaT;
 
 void setup() {
   // put your setup code here, to run once:
-  pinMode(MotorPWR, OUTPUT);
+  pinMode(MotorPin, OUTPUT);
   pinMode(encoderPinA, INPUT_PULLUP);
   pinMode(encoderPinB, INPUT_PULLUP);
   attachInterrupt(digitalPinToInterrupt(encoderPinA), updateEncoder, CHANGE);
   Serial.begin(9600);
+
+  delay(3000);
+
+  previousTime = micros();
+  
 }
 
 void loop() {
+
   // put your main code here, to run repeatedly:
-  digitalWrite(MotorPWR, LOW);
-  digitalWrite(LED_BUILTIN, HIGH);
-  delay(1000);
-  digitalWrite(LED_BUILTIN, LOW);
-  delay(1000);
+
+  currentPositionInDegrees = ((counter * 360) / (GR * 6));
+
+  if (currentPositionInDegrees >= 360 || currentPositionInDegrees <= -360){
+    counter -= ((GR * 6) * ((int)(currentPositionInDegrees / 360)));
+  }
+
+  currentTime = micros();
+  deltaT = currentTime - previousTime;
+
+
+  if (deltaT > 20) {
+    // Task 4: Compute error (P,I,D), and ensure that the previous error is updated
+    float errorPositionInDegrees = currentPositionInDegrees - demandPositionInDegrees; 
+    float errorPositionInDegrees_diff = (errorPositionInDegrees - errorPositionInDegrees_prev) / deltaT;
+    errorPositionInDegrees_sum += errorPositionInDegrees;
+    errorPositionInDegrees_prev = errorPositionInDegrees;
+
+    // Task 5: Compute the PID output
+    float controllerOutput = errorPositionInDegrees * Kp + errorPositionInDegrees_diff * Kd + errorPositionInDegrees_sum * Ki * deltaT;
+    controllerOutput = constrain(controllerOutput, -255, 255);
+
+    if ((0 < controllerOutput) && (controllerOutput < 130)) {
+      controllerOutput = 130;
+    }
+    if ((0 > controllerOutput) && (controllerOutput > -130)) {
+      controllerOutput = -130;
+    }
+
+
+
+    // Task 6: Send voltage to 
+    if (controllerOutput > 0) {
+      analogWrite(MotorPin, controllerOutput);
+    } else {
+      analogWrite(MotorPin, 0);
+    }
+
+    // Task 7: Print the current position and demand for plotting
+    Serial.print("CurrentPosition:");
+    Serial.print(currentPositionInDegrees);
+    Serial.print("  ");
+    Serial.print("DemandPosition:");
+    Serial.print(demandPositionInDegrees);
+    Serial.print(" ");
+    Serial.print("ControllerOutput:");
+    Serial.print(controllerOutput);
+    Serial.print(" ");
+    Serial.print("Error:");
+    Serial.print(errorPositionInDegrees);
+    Serial.print('\n');
+
+    previousTime = currentTime;
+    
+  }
+
 }
 
 void updateEncoder() {
@@ -54,10 +112,4 @@ void updateEncoder() {
 
   // Update the last known state of channel A
   aLastState = aState;
-  Serial.print(aState);
-  Serial.print(" ");
-  Serial.print(bState);
-  Serial.print("  ");
-  Serial.print(counter);
-  Serial.print("\n");
 }
