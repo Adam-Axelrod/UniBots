@@ -1,4 +1,4 @@
-# 🤖 UniBots | 2025-2026 Season
+# UniBots | 2025-2026 Season
 Official repository for the KCL UniBots Team 6! This project contains the core robot controller logic and individual member sandboxes. If you are a member of the team 6 please follow the instructions below.
 
 ## Instructions
@@ -38,7 +38,7 @@ Official repository for the KCL UniBots Team 6! This project contains the core r
 4. Open the terminal by pressing `Ctrl + J` (Windows) or `Cmd + J` (Mac).
 5. Type `git fetch origin` to make sure your computer sees the branch you created on the website.
 6. Type `git branch`. An asterisx (*) should appear next to main
-7. Type `git checkout yournames_branch`. This moves you from the "official" code to your personal workspace.
+7. Type `git switch yournames_branch`. This moves you from the "official" code to your personal workspace.
 8. Type `git add .` to prepare your new folder and file for saving.
 9. Type `git commit -m "initial setup"` to save those changes locally (you can change "inital setup" to whaetver message you want, just make sure you use "").
 10. Type `git push origin yournames_branch` to send your work to GitHub.
@@ -46,7 +46,7 @@ Official repository for the KCL UniBots Team 6! This project contains the core r
 
 
 
-## 🚦 Contribution Rules
+## Contribution Rules
 To prevent breaking the robot during testing, we follow these rules:
 * **Work in your own branch:** When you are testing out your code, make sure you are in your own branch (`git switch your_branch`).
 * **No Direct Pushes:** All changes to the `main` branch must come through a **Pull Request**.
