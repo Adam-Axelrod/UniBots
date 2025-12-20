@@ -2,12 +2,9 @@ import cv2
 import math
 from ultralytics import YOLO
 
-# =========================
-# CONFIG
-# =========================
-PI_IP = "10.42.0.117"   # 🔴 CHANGE THIS
+PI_IP = "10.42.0.117"   
 STREAM_URL = f"http://{PI_IP}:8080/?action=stream"
-MODEL_PATH = "/home/gautam/last.pt"
+MODEL_PATH = "last.pt"
 
 CONF_THRESHOLD = 0.5
 
@@ -40,9 +37,6 @@ cv2.setWindowProperty(
     cv2.WINDOW_FULLSCREEN
 )
 
-# =========================
-# MAIN LOOP
-# =========================
 while True:
     ret, frame = cap.read()
     if not ret:
