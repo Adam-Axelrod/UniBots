@@ -5,12 +5,14 @@ Ball detection via http which uses YOLOv8 to detect ping pong balls in real time
 
 ### 1. Install ustreamer on the pi to stream via pi 
 `sudo apt update`
+
 `sudo apt install ustreamer`
 
 ### 2. Run ustreamer from the pi
 `ustreamer --device=/dev/video0 --resolution=640x480 --desired-fps=30 --host=0.0.0.0 --port=8080`
 
-### 3. Run yolo code
+### 3. Run yolo code on laptop
 `cd src/gautam`
+
 `python3 yolo_stream.py`
 
