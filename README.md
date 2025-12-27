@@ -3,15 +3,15 @@ Official repository for the KCL UniBots Team 6! This project contains the core r
 
 ## Instructions
 
-### 1. Join GitHub Repo
+### 1. Join GitHub Repo (to add your code)
 * Create a [GitHub account](https://github.com)
 * Message me (**Adam**) the account username so I can add you format: `GitHub Username: <your username>`
 
-### 2. Join ClickUp Team
+### 2. Join ClickUp Team (to see what needs to be done)
 * Create a [ClickUp acount](https://clickup.com)
 * Message me (**Adam**) the account email so I can add you format: `ClickUp Email: <your email>`
 
-### 3. Join Fusion Team
+### 3. Join Fusion Team (to access 3D models)
 * Make sure you have a **Fusion360** account with the [Education License](https://www.autodesk.com/uk/education/edu-software/fusion)
 * Message me (**Adam**) the account email so I can add you format: `Fusion Email: <your email>`
 
