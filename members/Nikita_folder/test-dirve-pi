@@ -1,7 +1,7 @@
 from gpiozero import Robot
 from time import sleep
 
-# Define the pins for the Left motor (17, 27) and Right motor (22, 23)
+# Define the pins for the Left motor (17, 27) and Right motor (22, 23)sud
 robot = Robot(left=(17, 27), right=(22, 23))
 
 def efficient_drive():
