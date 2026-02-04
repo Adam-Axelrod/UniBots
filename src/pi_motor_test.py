@@ -3,19 +3,19 @@ from time import sleep
 
 # Raspberry Pi uses GPIO numbering (BCM), not physical pin numbers
 # GPIO 5 and GPIO 10 correspond to specific pins on the header
-motor_pin_1 = 5
-motor_pin_2 = 10
+motor_pin_1 = 17
+motor_pin_2 = 22
 
 # In gpiozero, Servo uses a range of -1 to 1. 
 # 0 corresponds to the 'middle' or 1500 microseconds.
-motor1 = Servo(motor_pin_1)
-motor2 = Servo(motor_pin_2)
+motor_turn = Servo(motor_pin_1)
+motor_move = Servo(motor_pin_2)
 
 def setup():
     print("Initializing motors...")
     # Setting to 0 is equivalent to writeMicroseconds(1500)
-    motor1.value = 0
-    motor2.value = 0
+    motor_turn.value = 0
+    motor_move.value = 0
     
     # Wait 2 seconds for the driver to initialize (same as your delay)
     sleep(2)
@@ -24,9 +24,10 @@ def setup():
 def loop():
     while True:
         # Example: To move motors like servo1.writeMicroseconds(2000)
-        # Use motor1.value = 1.0
+        # Use motor_turn.value = 1.0
         # To move like servo1.writeMicroseconds(1000)
-        # Use motor1.value = -1.0
+        motor_turn.value = 0
+        motor_move.value = 1.0
         
         # Keep the script running
         sleep(1)
@@ -37,6 +38,6 @@ if __name__ == "__main__":
         loop()
     except KeyboardInterrupt:
         # Cleanly stop if you press Ctrl+C
-        motor1.value = None
-        motor2.value = None
+        motor_turn.value = None
+        motor_move.value = None
         print("\nProgram stopped.")
