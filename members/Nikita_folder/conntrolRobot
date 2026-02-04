@@ -4,7 +4,6 @@ from time import sleep
 import os
 
 # If running on Windows to test logic, uncomment the line below:
-# os.environ['GPIOZERO_PIN_FACTORY'] = 'mock'
 
 # Setup pins
 motor_turn = Servo(17) # A/D for Steering
