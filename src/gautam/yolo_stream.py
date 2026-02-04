@@ -2,7 +2,7 @@ import cv2
 import math
 from ultralytics import YOLO
 
-PI_IP = "10.42.0.117"   
+PI_IP = "172.20.10.5"   
 STREAM_URL = f"http://{PI_IP}:8080/?action=stream"
 MODEL_PATH = "last.pt"
 
@@ -27,15 +27,9 @@ if not cap.isOpened():
 
 print("✅ Video stream opened")
 
-# =========================
-# CREATE FULLSCREEN WINDOW
-# =========================
 cv2.namedWindow(WINDOW_NAME, cv2.WINDOW_NORMAL)
-cv2.setWindowProperty(
-    WINDOW_NAME,
-    cv2.WND_PROP_FULLSCREEN,
-    cv2.WINDOW_FULLSCREEN
-)
+cv2.resizeWindow(WINDOW_NAME, 960, 720)  # optional
+
 
 while True:
     ret, frame = cap.read()
