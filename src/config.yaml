@@ -1,0 +1,39 @@
+# ============================================================
+# UniBots configuration
+# Edit this file to switch between simulation and real bot.
+# ============================================================
+
+# Input mode for all sensors: "sim" or "real" (sensor creators use this internally)
+input_mode: "sim"
+
+# --- Pi / real camera ---
+pi_ip: "127.0.0.1"          # use 127.0.0.1 when running on Pi
+pi_front_url: ""            # default: http://{pi_ip}:8080/?action=stream
+pi_rear_url: ""             # default: http://{pi_ip}:8081/?action=stream
+
+# --- Unity / simulation ---
+unity_host: "192.168.137.1"
+unity_port: 6000
+unity_front_host: ""        # default: unity_host
+unity_front_port: 6000
+unity_rear_port: 6002       # placeholder until Unity supports dual streams
+unity_width: 256
+unity_height: 256
+unity_frame_queue_maxsize: 3
+
+# --- IMU (optional) ---
+use_imu: false
+
+# --- Model ---
+model_path: "last.pt"       # relative to src/brain/ (or absolute path)
+conf_threshold: 0.5
+
+# --- Actuators (motor, speaker) ---
+actuator_mode: "sim"         # "sim" or "real"
+
+# --- Output / Debug (frame sink) ---
+headless: true               # true = TCP stream to viewer, false = local window
+stream_viewer_port: 6001
+stream_send_every_n_frames: 2
+jpeg_quality: 85
+window_name: "YOLO Ping Pong Greedy Path"
