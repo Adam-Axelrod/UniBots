@@ -14,11 +14,12 @@ _DEFAULT_CONFIG_PATH = os.path.join(_SRC_DIR, "config.yaml")
 
 
 def _resolve_model_path(raw_path: str) -> str:
-    """Resolve model path: if relative, check brain dir then project root."""
+    """Resolve model path: if relative, check brain dir, src dir, then project root."""
     if os.path.isabs(raw_path):
         return raw_path
     candidates = [
         os.path.join(_BRAIN_DIR, raw_path),
+        os.path.join(_SRC_DIR, raw_path),
         os.path.join(_ROOT_DIR, raw_path),
     ]
     for path in candidates:
@@ -54,7 +55,7 @@ class Config:
     USE_IMU: bool = False
 
     # Model
-    MODEL_PATH: str = "last.pt"
+    MODEL_PATH: str = "model/yolo11n_ncnn_model"
     CONF_THRESHOLD: float = 0.5
 
     # Actuators (motor, speaker)
@@ -70,7 +71,9 @@ class Config:
     def __post_init__(self):
         self.STREAM_URL = self.STREAM_URL or f"http://{self.PI_IP}:8080/?action=stream"
         self.PI_FRONT_URL = self.PI_FRONT_URL or self.STREAM_URL
-        self.PI_REAR_URL = self.PI_REAR_URL or f"http://{self.PI_IP}:8081/?action=stream"
+        self.PI_REAR_URL = (
+            self.PI_REAR_URL or f"http://{self.PI_IP}:8081/?action=stream"
+        )
         self.UNITY_FRAME_SIZE = self.UNITY_WIDTH * self.UNITY_HEIGHT * 4
         self.MODEL_PATH = _resolve_model_path(self.MODEL_PATH)
 
@@ -93,7 +96,8 @@ def load_config(path: str | None = None) -> Config:
         PI_IP=raw.get("pi_ip", "127.0.0.1"),
         STREAM_URL=raw.get("stream_url", ""),
         UNITY_PORT=raw.get("unity_port", 6000),
-        UNITY_FRONT_HOST=raw.get("unity_front_host") or raw.get("unity_host", "127.0.0.1"),
+        UNITY_FRONT_HOST=raw.get("unity_front_host")
+        or raw.get("unity_host", "127.0.0.1"),
         UNITY_FRONT_PORT=raw.get("unity_front_port", raw.get("unity_port", 6000)),
         UNITY_REAR_PORT=raw.get("unity_rear_port", 6002),
         UNITY_WIDTH=raw.get("unity_width", 256),
@@ -102,7 +106,7 @@ def load_config(path: str | None = None) -> Config:
         PI_FRONT_URL=raw.get("pi_front_url", ""),
         PI_REAR_URL=raw.get("pi_rear_url", ""),
         USE_IMU=raw.get("use_imu", False),
-        MODEL_PATH=raw.get("model_path", "last.pt"),
+        MODEL_PATH=raw.get("model_path", "model/yolo11n_ncnn_model"),
         CONF_THRESHOLD=raw.get("conf_threshold", 0.5),
         ACTUATOR_MODE=raw.get("actuator_mode", "sim"),
         HEADLESS=raw.get("headless", True),

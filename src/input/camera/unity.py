@@ -37,10 +37,11 @@ class UnityTCPCamera(Sensor):
         self._thread: threading.Thread | None = None
 
     def init(self) -> None:
+        print(f"[Camera] Connecting to Unity at {self._host}:{self._port}")
         self._sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self._sock.connect((self._host, self._port))
         self._sock.settimeout(0.1)
-        print(f"[Camera] Connected to Unity at {self._host}:{self._port}")
+        print(f"[Camera] Connected to Unity at {self._host}:{self._port} successfully")
         self._queue = queue.Queue(maxsize=self._queue_maxsize)
         self._reader_running = True
         self._thread = threading.Thread(target=self._reader_loop, daemon=True)
@@ -64,6 +65,7 @@ class UnityTCPCamera(Sensor):
                 frame = np.frombuffer(frame_bytes, dtype=np.uint8)
                 frame = frame.reshape((self._height, self._width, 4))
                 frame = frame[:, :, :3]
+                frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
                 frame = cv2.flip(frame, 0)
                 frame = frame.astype(np.float32) / 255.0
                 frame = np.power(frame, 1.0 / 2.2)
