@@ -40,6 +40,8 @@ def run(cfg: Config) -> None:
     executor = Executor(motor, speaker, drop_mechanism=None)
     frame_sink = create_frame_sink(cfg)
 
+    frame_sink.start()
+
     camera_front.init()
     camera_rear.init()
     ultrasonic.init()
@@ -48,7 +50,6 @@ def run(cfg: Config) -> None:
         imu.init()
     motor.init()
     speaker.init()
-    frame_sink.start()
 
     vision = VisionModule(cfg.MODEL_PATH, cfg.CONF_THRESHOLD)
     annotator = Annotator()
@@ -121,6 +122,8 @@ def run(cfg: Config) -> None:
             annotated = annotator(annotated_base, path, camera_point, debug)
             if frame_sink.send(annotated):
                 break
+    except Exception:
+        raise
     finally:
         print("[Main] Cleanup")
         camera_front.stop()

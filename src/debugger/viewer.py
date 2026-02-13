@@ -16,7 +16,8 @@ import cv2
 import numpy as np
 
 # Defaults (override via command line)
-DEFAULT_HOST = "192.168.137.202"
+# 127.0.0.1 for local debugging; use e.g. 192.168.137.202 when brain runs on Pi
+DEFAULT_HOST = "127.0.0.1"
 DEFAULT_PORT = 6001
 
 # Longer timeout so temporary stalls (e.g. YOLO busy) don't disconnect
