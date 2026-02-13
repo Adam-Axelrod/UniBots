@@ -55,9 +55,6 @@ def run_viewer_loop(sock):
     """Receive and display frames. Returns when connection is lost or user quits."""
     sock.settimeout(RECV_POLL_TIMEOUT_SEC)
 
-    fps_frame_times = []
-    fps_window = 30  # average over last N frames
-
     while True:
         def check_quit():
             return cv2.waitKey(1) & 0xFF == ord("q")
@@ -78,19 +75,8 @@ def run_viewer_loop(sock):
         if frame is None:
             continue
 
-        # FPS counter
-        now = time.perf_counter()
-        fps_frame_times.append(now)
-        if len(fps_frame_times) > fps_window:
-            fps_frame_times.pop(0)
-        if len(fps_frame_times) >= 2:
-            elapsed = fps_frame_times[-1] - fps_frame_times[0]
-            fps = (len(fps_frame_times) - 1) / elapsed if elapsed > 0 else 0
-            fps_text = f"FPS: {fps:.1f}"
-            cv2.putText(
-                frame, fps_text, (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2
-            )
-
+        h, w = frame.shape[:2]
+        cv2.resizeWindow(WINDOW_NAME, w, h)
         cv2.imshow(WINDOW_NAME, frame)
         if cv2.waitKey(1) & 0xFF == ord("q"):
             return "quit"

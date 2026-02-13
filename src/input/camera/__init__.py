@@ -15,8 +15,8 @@ def create_front_camera(cfg: Config) -> Sensor:
         return UnityTCPCamera(
             cfg.UNITY_FRONT_HOST,
             cfg.UNITY_FRONT_PORT,
-            cfg.UNITY_WIDTH,
-            cfg.UNITY_HEIGHT,
+            cfg.FRAME_WIDTH,
+            cfg.FRAME_HEIGHT,
             cfg.UNITY_FRAME_QUEUE_MAXSIZE,
             name="camera_front",
         )
@@ -26,5 +26,5 @@ def create_front_camera(cfg: Config) -> Sensor:
 def create_rear_camera(cfg: Config) -> Sensor:
     if cfg.INPUT_MODE == "sim":
         # Placeholder until Unity supports dual streams
-        return PlaceholderCamera(cfg.UNITY_WIDTH, cfg.UNITY_HEIGHT, name="camera_rear")
+        return PlaceholderCamera(cfg.FRAME_WIDTH, cfg.FRAME_HEIGHT, name="camera_rear")
     return PiMJPEGCamera(cfg.PI_REAR_URL, name="camera_rear")

@@ -7,15 +7,18 @@ import os
 import sys
 import time
 
+import cv2
+
 SRC_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 if SRC_DIR not in sys.path:
     sys.path.insert(0, SRC_DIR)
 
 from brain.config import Config, load_config  # noqa: E402
 from brain.fsm import FSM  # noqa: E402
-from brain.process import Annotator, DebugInfo, VisionModule, compute_path, format_cmd  # noqa: E402
+from brain.process import VisionModule, compute_path, format_cmd  # noqa: E402
 from brain.world_model import WorldModel  # noqa: E402
 from debugger import create_frame_sink  # noqa: E402
+from debugger.annotator import Annotator, DebugInfo  # noqa: E402
 from input.camera import create_front_camera, create_rear_camera  # noqa: E402
 from input.encoders import create_encoders  # noqa: E402
 from input.imu import create_imu  # noqa: E402
@@ -71,6 +74,15 @@ def run(cfg: Config) -> None:
 
             if front_frame is None:
                 continue
+
+            if cfg.FRAME_WIDTH > 0 and cfg.FRAME_HEIGHT > 0:
+                front_frame = cv2.resize(
+                    front_frame, (cfg.FRAME_WIDTH, cfg.FRAME_HEIGHT)
+                )
+            if rear_frame is not None and cfg.FRAME_WIDTH > 0 and cfg.FRAME_HEIGHT > 0:
+                rear_frame = cv2.resize(
+                    rear_frame, (cfg.FRAME_WIDTH, cfg.FRAME_HEIGHT)
+                )
 
             ball_centers, annotated_base = vision.get_detections(front_frame)
             h, w = front_frame.shape[:2]

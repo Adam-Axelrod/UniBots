@@ -11,6 +11,11 @@ pi_ip: "127.0.0.1" # use 127.0.0.1 when running on Pi
 pi_front_url: "" # default: http://{pi_ip}:8080/?action=stream
 pi_rear_url: "" # default: http://{pi_ip}:8081/?action=stream
 
+# --- Frame (model input size) ---
+# Both Unity and Pi frames use this size. Unity sends at this resolution; Pi frames are resized.
+frame_width: 256
+frame_height: 256
+
 # --- Unity / simulation ---
 # unity_host: "192.168.137.1"
 unity_host: "127.0.0.1"
@@ -18,8 +23,6 @@ unity_port: 6000
 unity_front_host: "" # default: unity_host
 unity_front_port: 6000
 unity_rear_port: 6002 # placeholder until Unity supports dual streams
-unity_width: 256
-unity_height: 256
 unity_frame_queue_maxsize: 3
 
 # --- IMU (optional) ---
@@ -36,7 +39,7 @@ conf_threshold: 0.5
 actuator_mode: "sim" # "sim" or "real"
 
 # --- Output / Debug (frame sink) ---
-headless: false # true = TCP stream to viewer, false = local window
+headless: true # true = TCP stream to viewer, false = local window
 stream_viewer_port: 6001
 stream_send_every_n_frames: 2
 jpeg_quality: 85

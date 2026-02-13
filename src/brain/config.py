@@ -3,7 +3,7 @@ Loads configuration from src/config.yaml.
 """
 
 import os
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 
 import yaml
 
@@ -37,14 +37,15 @@ class Config:
     PI_IP: str = "127.0.0.1"
     STREAM_URL: str = ""
 
+    # Frame (model input size; both sim and real resize to this)
+    FRAME_WIDTH: int = 256
+    FRAME_HEIGHT: int = 256
+
     # Unity (sim cameras)
     UNITY_PORT: int = 6000
     UNITY_FRONT_HOST: str = "127.0.0.1"
     UNITY_FRONT_PORT: int = 6000
     UNITY_REAR_PORT: int = 6002
-    UNITY_WIDTH: int = 256
-    UNITY_HEIGHT: int = 256
-    UNITY_FRAME_SIZE: int = field(init=False)
     UNITY_FRAME_QUEUE_MAXSIZE: int = 3
 
     # Cameras (real)
@@ -74,7 +75,6 @@ class Config:
         self.PI_REAR_URL = (
             self.PI_REAR_URL or f"http://{self.PI_IP}:8081/?action=stream"
         )
-        self.UNITY_FRAME_SIZE = self.UNITY_WIDTH * self.UNITY_HEIGHT * 4
         self.MODEL_PATH = _resolve_model_path(self.MODEL_PATH)
 
 
@@ -93,6 +93,8 @@ def load_config(path: str | None = None) -> Config:
 
     return Config(
         INPUT_MODE=raw.get("input_mode", "sim"),
+        FRAME_WIDTH=raw.get("frame_width", 256),
+        FRAME_HEIGHT=raw.get("frame_height", 256),
         PI_IP=raw.get("pi_ip", "127.0.0.1"),
         STREAM_URL=raw.get("stream_url", ""),
         UNITY_PORT=raw.get("unity_port", 6000),
@@ -100,8 +102,6 @@ def load_config(path: str | None = None) -> Config:
         or raw.get("unity_host", "127.0.0.1"),
         UNITY_FRONT_PORT=raw.get("unity_front_port", raw.get("unity_port", 6000)),
         UNITY_REAR_PORT=raw.get("unity_rear_port", 6002),
-        UNITY_WIDTH=raw.get("unity_width", 256),
-        UNITY_HEIGHT=raw.get("unity_height", 256),
         UNITY_FRAME_QUEUE_MAXSIZE=raw.get("unity_frame_queue_maxsize", 3),
         PI_FRONT_URL=raw.get("pi_front_url", ""),
         PI_REAR_URL=raw.get("pi_rear_url", ""),
