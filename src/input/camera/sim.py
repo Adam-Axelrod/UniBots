@@ -1,47 +1,40 @@
 """
-Unity TCP camera (sim).
+Sim camera: frames from Unity over TCP.
 """
 
 import queue
-import socket
 import threading
 
 import cv2
 import numpy as np
 
 from input.base import Sensor
+from input.unity_sim_connection import UnitySimConnection
 
 
 class UnityTCPCamera(Sensor):
-    """Frames from Unity over TCP. Reader thread drains socket."""
+    """Frames from Unity over TCP. Reader thread drains socket via UnitySimConnection."""
 
     def __init__(
         self,
-        host: str,
-        port: int,
+        connection: UnitySimConnection,
         width: int,
         height: int,
         queue_maxsize: int,
         name: str = "camera",
     ):
-        self._host = host
-        self._port = port
+        self._conn = connection
         self._width = width
         self._height = height
         self._frame_size = width * height * 4
         self._queue_maxsize = queue_maxsize
         self._name = name
-        self._sock: socket.socket | None = None
         self._queue: queue.Queue | None = None
         self._reader_running = False
         self._thread: threading.Thread | None = None
 
     def init(self) -> None:
-        print(f"[Camera] Connecting to Unity at {self._host}:{self._port}")
-        self._sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self._sock.connect((self._host, self._port))
-        self._sock.settimeout(0.1)
-        print(f"[Camera] Connected to Unity at {self._host}:{self._port} successfully")
+        """Start reader thread. Connection must already be initialized."""
         self._queue = queue.Queue(maxsize=self._queue_maxsize)
         self._reader_running = True
         self._thread = threading.Thread(target=self._reader_loop, daemon=True)
@@ -50,14 +43,12 @@ class UnityTCPCamera(Sensor):
 
     def _reader_loop(self) -> None:
         buffer = b""
-        while self._reader_running and self._sock:
+        while self._reader_running:
             try:
-                data = self._sock.recv(65536)
+                data = self._conn.recv(65536)
                 if data:
                     buffer += data
-            except socket.timeout:
-                pass
-            except (ConnectionResetError, BrokenPipeError, OSError):
+            except Exception:
                 break
             while len(buffer) >= self._frame_size and self._reader_running:
                 frame_bytes = buffer[: self._frame_size]
@@ -85,12 +76,7 @@ class UnityTCPCamera(Sensor):
         return self._queue.get(block=True)
 
     def stop(self) -> None:
+        """Stop reader thread. Does not close connection (main orchestrates)."""
         self._reader_running = False
         if self._thread:
             self._thread.join(timeout=1.0)
-        if self._sock:
-            try:
-                self._sock.close()
-            except OSError:
-                pass
-            self._sock = None

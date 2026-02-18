@@ -16,6 +16,11 @@ class MotorDirection(Enum):
     RIGHT = auto()
 
 
+def motor_direction_to_sim_str(d: MotorDirection) -> str:
+    """Map MotorDirection to Unity protocol strings: STOP, FORWARD, REVERSE, LEFT, RIGHT."""
+    return d.name
+
+
 @dataclass
 class Command:
     """Output command from brain."""

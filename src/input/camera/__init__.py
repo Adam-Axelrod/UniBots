@@ -4,17 +4,22 @@ Camera sensors. Creators branch on INPUT_MODE internally.
 
 from brain.config import Config
 from input.base import Sensor
+from input.unity_sim_connection import UnitySimConnection
 
 from input.camera.mjpeg import PiMJPEGCamera
 from input.camera.placeholder import PlaceholderCamera
-from input.camera.unity import UnityTCPCamera
+from input.camera.sim import UnityTCPCamera
 
 
-def create_front_camera(cfg: Config) -> Sensor:
+def create_front_camera(
+    cfg: Config,
+    unity_conn: UnitySimConnection | None = None,
+) -> Sensor:
     if cfg.INPUT_MODE == "sim":
+        if unity_conn is None:
+            raise ValueError("unity_conn required when INPUT_MODE is sim")
         return UnityTCPCamera(
-            cfg.UNITY_FRONT_HOST,
-            cfg.UNITY_FRONT_PORT,
+            unity_conn,
             cfg.FRAME_WIDTH,
             cfg.FRAME_HEIGHT,
             cfg.UNITY_FRAME_QUEUE_MAXSIZE,

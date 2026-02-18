@@ -22,6 +22,7 @@ from debugger.annotator import Annotator, DebugInfo  # noqa: E402
 from input.camera import create_front_camera  # noqa: E402
 from input.encoders import create_encoders  # noqa: E402
 from input.imu import create_imu  # noqa: E402
+from input.unity_sim_connection import UnitySimConnection  # noqa: E402
 from input.ultrasonic import create_ultrasonic  # noqa: E402
 from output.executor import Executor  # noqa: E402
 from output.motor_controller import create_motor_controller  # noqa: E402
@@ -32,12 +33,21 @@ OBSTACLE_THRESHOLD_CM = 30.0
 
 def run(cfg: Config) -> None:
     """Inputs → WorldModel → FSM → Command → Executor."""
-    camera_front = create_front_camera(cfg)
+    unity_conn: UnitySimConnection | None = None
+    if cfg.INPUT_MODE == "sim" or cfg.ACTUATOR_MODE == "sim":
+        unity_conn = UnitySimConnection(cfg.UNITY_FRONT_HOST, cfg.UNITY_FRONT_PORT)
+        unity_conn.init()
+
+    camera_front = create_front_camera(
+        cfg, unity_conn=unity_conn if cfg.INPUT_MODE == "sim" else None
+    )
     ultrasonic = create_ultrasonic(cfg)
     encoders = create_encoders(cfg)
     imu = create_imu(cfg)
 
-    motor = create_motor_controller(cfg)
+    motor = create_motor_controller(
+        cfg, unity_conn=unity_conn if cfg.ACTUATOR_MODE == "sim" else None
+    )
     speaker = create_speaker(cfg)
     executor = Executor(motor, speaker, drop_mechanism=None)
     frame_sink = create_frame_sink(cfg)
@@ -133,6 +143,8 @@ def run(cfg: Config) -> None:
         motor.stop()
         speaker.stop()
         frame_sink.close()
+        if unity_conn is not None:
+            unity_conn.close()
 
 
 if __name__ == "__main__":
