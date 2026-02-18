@@ -13,8 +13,8 @@ pi_rear_url: "" # default: http://{pi_ip}:8081/?action=stream
 
 # --- Frame (model input size) ---
 # Both Unity and Pi frames use this size. Unity sends at this resolution; Pi frames are resized.
-frame_width: 256
-frame_height: 256
+frame_width: 640
+frame_height: 480
 
 # --- Unity / simulation ---
 # unity_host: "192.168.137.1"

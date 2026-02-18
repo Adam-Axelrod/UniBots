@@ -19,7 +19,7 @@ class Executor:
         self._drop = drop_mechanism
 
     def execute(self, cmd: Command) -> None:
-        self._motor.drive(cmd.motor_left, cmd.motor_right)
+        self._motor.set_direction(cmd.motor)
         if cmd.beep:
             self._speaker.beep()
         if cmd.drop and self._drop:

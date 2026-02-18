@@ -79,13 +79,14 @@ def compute_path(
     return path
 
 
-def format_cmd(motor_left: float, motor_right: float, beep: bool, drop: bool) -> str:
-    """Compact command string for overlay."""
+def format_cmd(motor, beep: bool, drop: bool) -> str:
+    """Compact command string for overlay. motor is MotorDirection."""
     parts = []
     if beep:
         parts.append("BEEP")
     if drop:
         parts.append("DROP")
     if not parts:
-        parts.append(f"L:{motor_left:.2f} R:{motor_right:.2f}")
+        short = {"STOP": "STOP", "FORWARD": "FWD", "REVERSE": "REV", "LEFT": "L", "RIGHT": "R"}
+        parts.append(short.get(motor.name, motor.name))
     return " ".join(parts)

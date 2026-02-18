@@ -17,7 +17,8 @@ import numpy as np
 
 # Defaults (override via command line)
 # 127.0.0.1 for local debugging; use e.g. 192.168.137.202 when brain runs on Pi
-DEFAULT_HOST = "127.0.0.1"
+# DEFAULT_HOST = "127.0.0.1"
+DEFAULT_HOST = "100.77.177.6"
 DEFAULT_PORT = 6001
 
 # Longer timeout so temporary stalls (e.g. YOLO busy) don't disconnect
@@ -56,6 +57,7 @@ def run_viewer_loop(sock):
     sock.settimeout(RECV_POLL_TIMEOUT_SEC)
 
     while True:
+
         def check_quit():
             return cv2.waitKey(1) & 0xFF == ord("q")
 

@@ -4,7 +4,7 @@ FSM: receives WorldModel, produces (State, Command).
 
 from enum import Enum, auto
 
-from brain.command import Command
+from brain.command import Command, MotorDirection
 from brain.world_model import WorldModel
 
 
@@ -61,31 +61,31 @@ class FSM:
         elif wm.time_low:
             self.state = State.GO_TO_WALL
         # Wander: slow rotation
-        return Command(motor_left=0.1, motor_right=-0.1)
+        return Command(motor=MotorDirection.LEFT)
 
     def _drive_to_ball(self, wm: WorldModel) -> Command:
         if wm.ball_lost:
             self.state = State.SEARCH_BALL
         elif wm.time_low:
             self.state = State.GO_TO_WALL
-        # Drive toward target_ball; placeholder values
+        # Drive toward target_ball
         if wm.target_ball:
-            return Command(motor_left=0.3, motor_right=0.3)
+            return Command(motor=MotorDirection.FORWARD)
         return Command()
 
     def _go_to_wall(self, wm: WorldModel) -> Command:
         if wm.wall_visible:
             self.state = State.ALIGN_AND_DROP
-        return Command(motor_left=0.2, motor_right=0.2)
+        return Command(motor=MotorDirection.FORWARD)
 
     def _align_and_drop(self, wm: WorldModel) -> Command:
         self.state = State.PARK
         return Command(drop=True)
 
     def _park(self, wm: WorldModel) -> Command:
-        return Command(motor_left=0.1, motor_right=0.1)
+        return Command(motor=MotorDirection.FORWARD)
 
     def _avoid_obstacle(self, wm: WorldModel) -> Command:
         if wm.obstacle_cleared:
             self.state = self._prev_state or State.SEARCH_BALL
-        return Command(motor_left=-0.2, motor_right=0.2)
+        return Command(motor=MotorDirection.LEFT)

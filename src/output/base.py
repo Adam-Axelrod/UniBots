@@ -10,13 +10,13 @@ class Actuator(ABC):
     Base for motor, speaker. init() -> commands in loop -> stop().
 
     Method return types by actuator:
-      - motor: drive(left_speed, right_speed) -> None
+      - motor: set_direction(direction: MotorDirection) -> None
       - speaker: beep() -> None
     """
 
     @abstractmethod
     def init(self) -> None:
-        """Initialize the actuator. Call before drive/beep."""
+        """Initialize the actuator. Call before set_direction/beep."""
         ...
 
     @abstractmethod
