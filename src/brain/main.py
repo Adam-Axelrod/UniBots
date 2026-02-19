@@ -41,7 +41,9 @@ def run(cfg: Config) -> None:
     camera_front = create_front_camera(
         cfg, unity_conn=unity_conn if cfg.INPUT_MODE == "sim" else None
     )
-    ultrasonic = create_ultrasonic(cfg)
+    ultrasonic = create_ultrasonic(
+        cfg, unity_conn=unity_conn if cfg.INPUT_MODE == "sim" else None
+    )
     encoders = create_encoders(cfg)
     imu = create_imu(cfg)
 

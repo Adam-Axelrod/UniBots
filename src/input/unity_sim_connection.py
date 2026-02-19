@@ -15,6 +15,7 @@ class UnitySimConnection:
         self._port = port
         self._sock: socket.socket | None = None
         self._send_lock = threading.Lock()
+        self._latest_distance_m: float = 0.0
 
     def init(self) -> None:
         """Connect to Unity."""
@@ -23,6 +24,14 @@ class UnitySimConnection:
         self._sock.connect((self._host, self._port))
         self._sock.settimeout(0.1)
         print(f"[UnitySim] Connected to {self._host}:{self._port}")
+
+    def update_distance(self, d_m: float) -> None:
+        """Update latest ultrasonic distance (metres). Called by camera reader."""
+        self._latest_distance_m = d_m
+
+    def get_distance_cm(self) -> float:
+        """Return latest ultrasonic distance in cm."""
+        return self._latest_distance_m * 100.0
 
     def recv(self, size: int) -> bytes:
         """Read from socket. For camera reader thread."""

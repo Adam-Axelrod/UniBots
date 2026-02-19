@@ -1,8 +1,25 @@
 """
-Ultrasonic sensor (sim) — mock readings.
+Ultrasonic sensor (sim) — mock readings and Unity connection.
 """
 
 from input.base import Sensor
+from input.unity_sim_connection import UnitySimConnection
+
+
+class UltrasonicSimFromConnection(Sensor):
+    """Ultrasonic reading from Unity sim (distance sent before each frame)."""
+
+    def __init__(self, connection: UnitySimConnection):
+        self._conn = connection
+
+    def init(self) -> None:
+        pass
+
+    def get_data(self) -> float:
+        return self._conn.get_distance_cm()
+
+    def stop(self) -> None:
+        pass
 
 
 class UltrasonicSim(Sensor):

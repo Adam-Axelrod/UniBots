@@ -3,6 +3,7 @@ Sim camera: frames from Unity over TCP.
 """
 
 import queue
+import struct
 import threading
 
 import cv2
@@ -50,9 +51,13 @@ class UnityTCPCamera(Sensor):
                     buffer += data
             except Exception:
                 break
-            while len(buffer) >= self._frame_size and self._reader_running:
-                frame_bytes = buffer[: self._frame_size]
-                buffer = buffer[self._frame_size :]
+            packet_size = 4 + self._frame_size
+            while len(buffer) >= packet_size and self._reader_running:
+                distance_bytes = buffer[:4]
+                frame_bytes = buffer[4 : 4 + self._frame_size]
+                buffer = buffer[packet_size:]
+                distance_m = struct.unpack("<f", distance_bytes)[0]
+                self._conn.update_distance(distance_m)
                 frame = np.frombuffer(frame_bytes, dtype=np.uint8)
                 frame = frame.reshape((self._height, self._width, 4))
                 frame = frame[:, :, :3]
