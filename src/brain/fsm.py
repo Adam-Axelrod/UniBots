@@ -68,6 +68,9 @@ class FSM:
             self.state = State.SEARCH_BALL
         elif wm.time_low:
             self.state = State.GO_TO_WALL
+        elif not wm.target_ball:
+            # No ball in view (e.g. returned from AVOID after losing sight)
+            self.state = State.SEARCH_BALL
         # Drive toward target_ball
         if wm.target_ball:
             return Command(motor=MotorDirection.FORWARD)
