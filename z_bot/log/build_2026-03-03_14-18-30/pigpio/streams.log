@@ -1,0 +1,63 @@
+[0.322s] Invoking command in '/home/gautam/z_bot/build/pigpio': PS1=(ros) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ /usr/bin/cmake --build /home/gautam/z_bot/build/pigpio -- -j4 -l4
+[0.394s] [ 13%] Built target pigpiod_if2
+[0.394s] [ 26%] Built target pigpio
+[0.399s] [ 39%] Built target pigpiod_if
+[0.426s] [ 65%] Built target pig2vcd
+[0.427s] [ 65%] Built target pigs
+[0.441s] [ 73%] Built target pigpiod
+[0.469s] [ 91%] Built target x_pigpio
+[0.470s] [ 91%] Built target x_pigpiod_if
+[0.497s] [100%] Built target x_pigpiod_if2
+[0.513s] Invoked command in '/home/gautam/z_bot/build/pigpio' returned '0': PS1=(ros) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ /usr/bin/cmake --build /home/gautam/z_bot/build/pigpio -- -j4 -l4
+[0.524s] Invoking command in '/home/gautam/z_bot/build/pigpio': PS1=(ros) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ /usr/bin/cmake --install /home/gautam/z_bot/build/pigpio
+[0.535s] -- Install configuration: ""
+[0.536s] -- Up-to-date: /home/gautam/z_bot/install/pigpio/lib/libpigpio.so
+[0.536s] -- Up-to-date: /home/gautam/z_bot/install/pigpio/lib/libpigpiod_if.so
+[0.536s] -- Up-to-date: /home/gautam/z_bot/install/pigpio/lib/libpigpiod_if2.so
+[0.536s] -- Up-to-date: /home/gautam/z_bot/install/pigpio/bin/pig2vcd
+[0.536s] -- Up-to-date: /home/gautam/z_bot/install/pigpio/bin/pigpiod
+[0.536s] -- Up-to-date: /home/gautam/z_bot/install/pigpio/bin/pigs
+[0.537s] -- Up-to-date: /home/gautam/z_bot/install/pigpio/lib/cmake/pigpio/pigpioTargets.cmake
+[0.537s] -- Up-to-date: /home/gautam/z_bot/install/pigpio/lib/cmake/pigpio/pigpioTargets-noconfig.cmake
+[0.537s] -- Up-to-date: /home/gautam/z_bot/install/pigpio/lib/cmake/pigpio/pigpioConfig.cmake
+[0.537s] -- Up-to-date: /home/gautam/z_bot/install/pigpio/lib/cmake/pigpio/pigpioConfigVersion.cmake
+[0.537s] -- Up-to-date: /home/gautam/z_bot/install/pigpio/include/pigpio.h
+[0.537s] -- Up-to-date: /home/gautam/z_bot/install/pigpio/include/pigpiod_if.h
+[0.537s] -- Up-to-date: /home/gautam/z_bot/install/pigpio/include/pigpiod_if2.h
+[0.537s] -- Up-to-date: /home/gautam/z_bot/install/pigpio/man/man1/libpigpio.so.1
+[0.537s] -- Up-to-date: /home/gautam/z_bot/install/pigpio/man/man1/libpigpiod_if.so.1
+[0.537s] -- Up-to-date: /home/gautam/z_bot/install/pigpio/man/man1/libpigpiod_if2.so.1
+[0.537s] -- Up-to-date: /home/gautam/z_bot/install/pigpio/man/man1/pig2vcd.1
+[0.537s] -- Up-to-date: /home/gautam/z_bot/install/pigpio/man/man1/pigpiod.1
+[0.537s] -- Up-to-date: /home/gautam/z_bot/install/pigpio/man/man1/pigs.1
+[0.538s] -- Up-to-date: /home/gautam/z_bot/install/pigpio/man/man3/pigpio.3
+[0.538s] -- Up-to-date: /home/gautam/z_bot/install/pigpio/man/man3/pigpiod_if.3
+[0.538s] -- Up-to-date: /home/gautam/z_bot/install/pigpio/man/man3/pigpiod_if2.3
+[0.812s] /usr/lib/python3/dist-packages/setuptools/_distutils/cmd.py:90: SetuptoolsDeprecationWarning: setup.py install is deprecated.
+[0.813s] !!
+[0.813s] 
+[0.813s]         ********************************************************************************
+[0.817s]         Please avoid running ``setup.py`` directly.
+[0.817s]         Instead, use pypa/build, pypa/installer or other
+[0.817s]         standards-based tools.
+[0.817s] 
+[0.817s]         See https://blog.ganssle.io/articles/2021/10/setup-py-deprecated.html for details.
+[0.817s]         ********************************************************************************
+[0.817s] 
+[0.817s] !!
+[0.817s]   self.initialize_options()
+[0.972s] /usr/lib/python3/dist-packages/setuptools/_distutils/cmd.py:90: EasyInstallDeprecationWarning: easy_install command is deprecated.
+[0.972s] !!
+[0.972s] 
+[0.972s]         ********************************************************************************
+[0.972s]         Please avoid running ``setup.py`` and ``easy_install``.
+[0.972s]         Instead, use pypa/build, pypa/installer or other
+[0.972s]         standards-based tools.
+[0.972s] 
+[0.972s]         See https://github.com/pypa/setuptools/issues/917 for details.
+[0.973s]         ********************************************************************************
+[0.973s] 
+[0.973s] !!
+[0.973s]   self.initialize_options()
+[1.261s] error: Cannot update time stamp of directory '/home/gautam/z_bot/pigpio/pigpio.egg-info'
+[1.333s] Invoked command in '/home/gautam/z_bot/build/pigpio' returned '0': PS1=(ros) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ /usr/bin/cmake --install /home/gautam/z_bot/build/pigpio

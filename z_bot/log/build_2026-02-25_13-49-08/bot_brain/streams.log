@@ -1,0 +1,76 @@
+[1.185s] Invoking command in '/home/gautam/z_bot/build/bot_brain': PS1=(ros) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ PYTHONPATH=/home/gautam/z_bot/build/bot_brain/prefix_override:/home/gautam/.venvs/ros/lib/python3.13/site-packages/colcon_core/task/python/colcon_distutils_commands:/home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages:${PYTHONPATH} /home/gautam/.venvs/ros/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --uninstall --editable --build-directory /home/gautam/z_bot/build/bot_brain/build
+[1.556s] running develop
+[1.795s] Removing /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot-brain.egg-link (link to .)
+[1.872s] Invoked command in '/home/gautam/z_bot/build/bot_brain' returned '0': PS1=(ros) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ PYTHONPATH=/home/gautam/z_bot/build/bot_brain/prefix_override:/home/gautam/.venvs/ros/lib/python3.13/site-packages/colcon_core/task/python/colcon_distutils_commands:/home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages:${PYTHONPATH} /home/gautam/.venvs/ros/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --uninstall --editable --build-directory /home/gautam/z_bot/build/bot_brain/build
+[1.873s] Invoking command in '/home/gautam/z_bot/src/bot_brain': PS1=(ros) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ PYTHONPATH=/home/gautam/z_bot/build/bot_brain/prefix_override:/home/gautam/.venvs/ros/lib/python3.13/site-packages/colcon_core/task/python/colcon_distutils_commands:/home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages:${PYTHONPATH} /home/gautam/.venvs/ros/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/bot_brain build --build-base /home/gautam/z_bot/build/bot_brain/build install --record /home/gautam/z_bot/build/bot_brain/install.log --single-version-externally-managed install_data --force
+[2.228s] running egg_info
+[2.253s] writing ../../build/bot_brain/bot_brain.egg-info/PKG-INFO
+[2.254s] writing dependency_links to ../../build/bot_brain/bot_brain.egg-info/dependency_links.txt
+[2.255s] writing entry points to ../../build/bot_brain/bot_brain.egg-info/entry_points.txt
+[2.256s] writing requirements to ../../build/bot_brain/bot_brain.egg-info/requires.txt
+[2.256s] writing top-level names to ../../build/bot_brain/bot_brain.egg-info/top_level.txt
+[2.311s] reading manifest file '../../build/bot_brain/bot_brain.egg-info/SOURCES.txt'
+[2.313s] writing manifest file '../../build/bot_brain/bot_brain.egg-info/SOURCES.txt'
+[2.313s] running build
+[2.313s] running build_py
+[2.315s] copying bot_brain/__init__.py -> /home/gautam/z_bot/build/bot_brain/build/lib/bot_brain
+[2.315s] copying bot_brain/sound_test.py -> /home/gautam/z_bot/build/bot_brain/build/lib/bot_brain
+[2.316s] copying bot_brain/inputs/__init__.py -> /home/gautam/z_bot/build/bot_brain/build/lib/bot_brain/inputs
+[2.316s] copying bot_brain/inputs/cam_run.py -> /home/gautam/z_bot/build/bot_brain/build/lib/bot_brain/inputs
+[2.317s] copying bot_brain/inputs/ultra_run.py -> /home/gautam/z_bot/build/bot_brain/build/lib/bot_brain/inputs
+[2.317s] copying bot_brain/inputs/yolo_run.py -> /home/gautam/z_bot/build/bot_brain/build/lib/bot_brain/inputs
+[2.318s] copying bot_brain/inputs/imu_run.py -> /home/gautam/z_bot/build/bot_brain/build/lib/bot_brain/inputs
+[2.319s] copying bot_brain/outputs/__init__.py -> /home/gautam/z_bot/build/bot_brain/build/lib/bot_brain/outputs
+[2.319s] copying bot_brain/logic/params.py -> /home/gautam/z_bot/build/bot_brain/build/lib/bot_brain/logic
+[2.319s] copying bot_brain/logic/world_model.py -> /home/gautam/z_bot/build/bot_brain/build/lib/bot_brain/logic
+[2.320s] copying bot_brain/logic/__init__.py -> /home/gautam/z_bot/build/bot_brain/build/lib/bot_brain/logic
+[2.320s] copying bot_brain/logic/fsm.py -> /home/gautam/z_bot/build/bot_brain/build/lib/bot_brain/logic
+[2.320s] copying bot_brain/logic/command.py -> /home/gautam/z_bot/build/bot_brain/build/lib/bot_brain/logic
+[2.321s] copying bot_brain/logic/brain_run.py -> /home/gautam/z_bot/build/bot_brain/build/lib/bot_brain/logic
+[2.322s] running install
+[2.328s] running install_lib
+[2.354s] creating /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot_brain
+[2.354s] copying /home/gautam/z_bot/build/bot_brain/build/lib/bot_brain/__init__.py -> /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot_brain
+[2.354s] creating /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot_brain/inputs
+[2.354s] copying /home/gautam/z_bot/build/bot_brain/build/lib/bot_brain/inputs/__init__.py -> /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot_brain/inputs
+[2.354s] copying /home/gautam/z_bot/build/bot_brain/build/lib/bot_brain/inputs/cam_run.py -> /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot_brain/inputs
+[2.354s] copying /home/gautam/z_bot/build/bot_brain/build/lib/bot_brain/inputs/ultra_run.py -> /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot_brain/inputs
+[2.354s] copying /home/gautam/z_bot/build/bot_brain/build/lib/bot_brain/inputs/yolo_run.py -> /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot_brain/inputs
+[2.355s] copying /home/gautam/z_bot/build/bot_brain/build/lib/bot_brain/inputs/imu_run.py -> /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot_brain/inputs
+[2.355s] creating /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot_brain/outputs
+[2.355s] copying /home/gautam/z_bot/build/bot_brain/build/lib/bot_brain/outputs/__init__.py -> /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot_brain/outputs
+[2.355s] copying /home/gautam/z_bot/build/bot_brain/build/lib/bot_brain/sound_test.py -> /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot_brain
+[2.355s] creating /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot_brain/logic
+[2.355s] copying /home/gautam/z_bot/build/bot_brain/build/lib/bot_brain/logic/params.py -> /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot_brain/logic
+[2.355s] copying /home/gautam/z_bot/build/bot_brain/build/lib/bot_brain/logic/world_model.py -> /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot_brain/logic
+[2.355s] copying /home/gautam/z_bot/build/bot_brain/build/lib/bot_brain/logic/__init__.py -> /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot_brain/logic
+[2.355s] copying /home/gautam/z_bot/build/bot_brain/build/lib/bot_brain/logic/fsm.py -> /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot_brain/logic
+[2.356s] copying /home/gautam/z_bot/build/bot_brain/build/lib/bot_brain/logic/command.py -> /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot_brain/logic
+[2.356s] copying /home/gautam/z_bot/build/bot_brain/build/lib/bot_brain/logic/brain_run.py -> /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot_brain/logic
+[2.356s] byte-compiling /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot_brain/__init__.py to __init__.cpython-313.pyc
+[2.357s] byte-compiling /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot_brain/inputs/__init__.py to __init__.cpython-313.pyc
+[2.357s] byte-compiling /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot_brain/inputs/cam_run.py to cam_run.cpython-313.pyc
+[2.358s] byte-compiling /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot_brain/inputs/ultra_run.py to ultra_run.cpython-313.pyc
+[2.359s] byte-compiling /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot_brain/inputs/yolo_run.py to yolo_run.cpython-313.pyc
+[2.363s] byte-compiling /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot_brain/inputs/imu_run.py to imu_run.cpython-313.pyc
+[2.364s] byte-compiling /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot_brain/outputs/__init__.py to __init__.cpython-313.pyc
+[2.364s] byte-compiling /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot_brain/sound_test.py to sound_test.cpython-313.pyc
+[2.364s] byte-compiling /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot_brain/logic/params.py to params.cpython-313.pyc
+[2.365s] byte-compiling /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot_brain/logic/world_model.py to world_model.cpython-313.pyc
+[2.365s] byte-compiling /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot_brain/logic/__init__.py to __init__.cpython-313.pyc
+[2.365s] byte-compiling /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot_brain/logic/fsm.py to fsm.cpython-313.pyc
+[2.366s] byte-compiling /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot_brain/logic/command.py to command.cpython-313.pyc
+[2.367s] byte-compiling /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot_brain/logic/brain_run.py to brain_run.cpython-313.pyc
+[2.368s] running install_data
+[2.369s] copying resource/bot_brain -> /home/gautam/z_bot/install/bot_brain/share/ament_index/resource_index/packages
+[2.369s] copying package.xml -> /home/gautam/z_bot/install/bot_brain/share/bot_brain
+[2.369s] running install_egg_info
+[2.395s] Copying ../../build/bot_brain/bot_brain.egg-info to /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot_brain-0.0.0-py3.13.egg-info
+[2.396s] running install_scripts
+[2.534s] Installing brain script to /home/gautam/z_bot/install/bot_brain/lib/bot_brain
+[2.535s] Installing camera script to /home/gautam/z_bot/install/bot_brain/lib/bot_brain
+[2.536s] Installing imu script to /home/gautam/z_bot/install/bot_brain/lib/bot_brain
+[2.537s] Installing ultrasonic script to /home/gautam/z_bot/install/bot_brain/lib/bot_brain
+[2.538s] Installing yolo script to /home/gautam/z_bot/install/bot_brain/lib/bot_brain
+[2.540s] writing list of installed files to '/home/gautam/z_bot/build/bot_brain/install.log'
+[2.606s] Invoked command in '/home/gautam/z_bot/src/bot_brain' returned '0': PS1=(ros) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ PYTHONPATH=/home/gautam/z_bot/build/bot_brain/prefix_override:/home/gautam/.venvs/ros/lib/python3.13/site-packages/colcon_core/task/python/colcon_distutils_commands:/home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages:${PYTHONPATH} /home/gautam/.venvs/ros/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/bot_brain build --build-base /home/gautam/z_bot/build/bot_brain/build install --record /home/gautam/z_bot/build/bot_brain/install.log --single-version-externally-managed install_data --force

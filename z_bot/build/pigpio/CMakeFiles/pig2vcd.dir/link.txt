@@ -1,0 +1,1 @@
+/usr/bin/cc -rdynamic -Wl,--dependency-file=CMakeFiles/pig2vcd.dir/link.d CMakeFiles/pig2vcd.dir/pig2vcd.c.o CMakeFiles/pig2vcd.dir/command.c.o -o pig2vcd

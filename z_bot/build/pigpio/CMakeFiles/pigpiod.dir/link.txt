@@ -1,0 +1,1 @@
+/usr/bin/cc -rdynamic -Wl,--dependency-file=CMakeFiles/pigpiod.dir/link.d CMakeFiles/pigpiod.dir/pigpiod.c.o -o pigpiod  -Wl,-rpath,/home/gautam/z_bot/build/pigpio: libpigpio.so -Wl,-Bstatic -lrt -Wl,-Bdynamic

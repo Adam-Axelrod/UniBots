@@ -1,0 +1,1 @@
+/usr/bin/cc -rdynamic -Wl,--dependency-file=CMakeFiles/x_pigpiod_if2.dir/link.d CMakeFiles/x_pigpiod_if2.dir/x_pigpiod_if2.c.o -o x_pigpiod_if2  -Wl,-rpath,/home/gautam/z_bot/build/pigpio libpigpiod_if2.so -Wl,-Bstatic -lrt -Wl,-Bdynamic

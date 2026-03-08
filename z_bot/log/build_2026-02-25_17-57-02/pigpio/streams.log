@@ -1,0 +1,127 @@
+[0.356s] Invoking command in '/home/gautam/z_bot/build/pigpio': PS1=(ros) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ /usr/bin/cmake /home/gautam/z_bot/pigpio -DCMAKE_INSTALL_PREFIX=/home/gautam/z_bot/install/pigpio
+[0.504s] [0mCMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):
+[0.505s]   Compatibility with CMake < 3.10 will be removed from a future version of
+[0.505s]   CMake.
+[0.505s] 
+[0.505s]   Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+[0.505s]   to tell CMake that the project requires at least <min> but has been updated
+[0.505s]   to work with policies introduced by <max> or earlier.
+[0.505s] 
+[0.505s] [0m
+[0.981s] -- The C compiler identification is GNU 14.2.0
+[1.014s] -- Detecting C compiler ABI info
+[1.193s] -- Detecting C compiler ABI info - done
+[1.218s] -- Check for working C compiler: /usr/bin/cc - skipped
+[1.221s] -- Detecting C compile features
+[1.222s] -- Detecting C compile features - done
+[1.247s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[1.406s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[1.409s] -- Found Threads: TRUE
+[1.416s] [33mCMake Warning (dev) at /usr/share/cmake-3.31/Modules/FindPackageHandleStandardArgs.cmake:441 (message):
+[1.417s] -- Found rt: /usr/lib/aarch64-linux-gnu/librt.a
+[1.417s]   The package name passed to `find_package_handle_standard_args` (rt) does
+[1.417s]   not match the name of the calling package (RT).  This can lead to problems
+[1.417s]   in calling code that expects `find_package` result variables (e.g.,
+[1.417s]   `_FOUND`) to follow a certain pattern.
+[1.417s] Call Stack (most recent call first):
+[1.417s]   cmake/FindRT.cmake:28 (FIND_PACKAGE_HANDLE_STANDARD_ARGS)
+[1.418s]   CMakeLists.txt:8 (find_package)
+[1.418s] This warning is for project developers.  Use -Wno-dev to suppress it.
+[1.418s] [0m
+[1.426s] -- Performing Test COMPILER_HAS_HIDDEN_VISIBILITY
+[1.561s] -- Performing Test COMPILER_HAS_HIDDEN_VISIBILITY - Success
+[1.561s] -- Performing Test COMPILER_HAS_HIDDEN_INLINE_VISIBILITY
+[1.720s] -- Performing Test COMPILER_HAS_HIDDEN_INLINE_VISIBILITY - Failed
+[1.723s] -- Performing Test COMPILER_HAS_DEPRECATED_ATTR
+[1.865s] -- Performing Test COMPILER_HAS_DEPRECATED_ATTR - Success
+[2.142s] -- Configuring done (1.6s)
+[2.160s] -- Generating done (0.0s)
+[2.163s] -- Build files have been written to: /home/gautam/z_bot/build/pigpio
+[2.172s] Invoked command in '/home/gautam/z_bot/build/pigpio' returned '0': PS1=(ros) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ /usr/bin/cmake /home/gautam/z_bot/pigpio -DCMAKE_INSTALL_PREFIX=/home/gautam/z_bot/install/pigpio
+[2.175s] Invoking command in '/home/gautam/z_bot/build/pigpio': PS1=(ros) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ /usr/bin/cmake --build /home/gautam/z_bot/build/pigpio -- -j4 -l4
+[2.271s] [  4%] [32mBuilding C object CMakeFiles/pigpio.dir/pigpio.c.o[0m
+[3.278s] [  8%] [32mBuilding C object CMakeFiles/pigs.dir/pigs.c.o[0m
+[3.294s] [ 13%] [32mBuilding C object CMakeFiles/pigpiod_if2.dir/pigpiod_if2.c.o[0m
+[3.316s] [ 17%] [32mBuilding C object CMakeFiles/pigpiod_if.dir/pigpiod_if.c.o[0m
+[3.410s] [ 21%] [32mBuilding C object CMakeFiles/pigs.dir/command.c.o[0m
+[3.566s] [ 26%] [32mBuilding C object CMakeFiles/pigpiod_if.dir/command.c.o[0m
+[3.605s] [ 30%] [32mBuilding C object CMakeFiles/pigpiod_if2.dir/command.c.o[0m
+[3.640s] [ 34%] [32m[1mLinking C executable pigs[0m
+[3.755s] [ 34%] Built target pigs
+[3.787s] [ 39%] [32m[1mLinking C shared library libpigpiod_if.so[0m
+[3.809s] [ 43%] [32m[1mLinking C shared library libpigpiod_if2.so[0m
+[3.857s] [ 43%] Built target pigpiod_if
+[3.900s] [ 43%] Built target pigpiod_if2
+[4.046s] [ 47%] [32mBuilding C object CMakeFiles/pigpio.dir/command.c.o[0m
+[4.143s] [ 52%] [32m[1mLinking C shared library libpigpio.so[0m
+[4.205s] [ 52%] Built target pigpio
+[4.237s] [ 65%] [32mBuilding C object CMakeFiles/x_pigpiod_if2.dir/x_pigpiod_if2.c.o[0m
+[4.237s] [ 65%] [32mBuilding C object CMakeFiles/x_pigpiod_if.dir/x_pigpiod_if.c.o[0m
+[4.237s] [ 65%] [32mBuilding C object CMakeFiles/pig2vcd.dir/pig2vcd.c.o[0m
+[4.304s] [ 69%] [32mBuilding C object CMakeFiles/pig2vcd.dir/command.c.o[0m
+[4.385s] [ 73%] [32m[1mLinking C executable x_pigpiod_if[0m
+[4.386s] [ 78%] [32m[1mLinking C executable x_pigpiod_if2[0m
+[4.442s] [ 82%] [32m[1mLinking C executable pig2vcd[0m
+[4.489s] [ 82%] Built target x_pigpiod_if2
+[4.504s] [ 82%] Built target x_pigpiod_if
+[4.519s] [ 82%] Built target pig2vcd
+[4.531s] [ 86%] [32mBuilding C object CMakeFiles/x_pigpio.dir/x_pigpio.c.o[0m
+[4.656s] [ 91%] [32m[1mLinking C executable x_pigpio[0m
+[4.699s] [ 91%] Built target x_pigpio
+[4.723s] [ 95%] [32mBuilding C object CMakeFiles/pigpiod.dir/pigpiod.c.o[0m
+[4.812s] [100%] [32m[1mLinking C executable pigpiod[0m
+[4.866s] [100%] Built target pigpiod
+[4.879s] Invoked command in '/home/gautam/z_bot/build/pigpio' returned '0': PS1=(ros) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ /usr/bin/cmake --build /home/gautam/z_bot/build/pigpio -- -j4 -l4
+[4.891s] Invoking command in '/home/gautam/z_bot/build/pigpio': PS1=(ros) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ /usr/bin/cmake --install /home/gautam/z_bot/build/pigpio
+[4.902s] -- Install configuration: ""
+[4.902s] -- Installing: /home/gautam/z_bot/install/pigpio/lib/libpigpio.so
+[4.903s] -- Installing: /home/gautam/z_bot/install/pigpio/lib/libpigpiod_if.so
+[4.903s] -- Installing: /home/gautam/z_bot/install/pigpio/lib/libpigpiod_if2.so
+[4.903s] -- Installing: /home/gautam/z_bot/install/pigpio/bin/pig2vcd
+[4.903s] -- Installing: /home/gautam/z_bot/install/pigpio/bin/pigpiod
+[4.904s] -- Set non-toolchain portion of runtime path of "/home/gautam/z_bot/install/pigpio/bin/pigpiod" to ""
+[4.904s] -- Installing: /home/gautam/z_bot/install/pigpio/bin/pigs
+[4.904s] -- Installing: /home/gautam/z_bot/install/pigpio/lib/cmake/pigpio/pigpioTargets.cmake
+[4.904s] -- Installing: /home/gautam/z_bot/install/pigpio/lib/cmake/pigpio/pigpioTargets-noconfig.cmake
+[4.904s] -- Installing: /home/gautam/z_bot/install/pigpio/lib/cmake/pigpio/pigpioConfig.cmake
+[4.904s] -- Installing: /home/gautam/z_bot/install/pigpio/lib/cmake/pigpio/pigpioConfigVersion.cmake
+[4.904s] -- Installing: /home/gautam/z_bot/install/pigpio/include/pigpio.h
+[4.905s] -- Installing: /home/gautam/z_bot/install/pigpio/include/pigpiod_if.h
+[4.905s] -- Installing: /home/gautam/z_bot/install/pigpio/include/pigpiod_if2.h
+[4.905s] -- Installing: /home/gautam/z_bot/install/pigpio/man/man1/libpigpio.so.1
+[4.910s] -- Installing: /home/gautam/z_bot/install/pigpio/man/man1/libpigpiod_if.so.1
+[4.912s] -- Installing: /home/gautam/z_bot/install/pigpio/man/man1/libpigpiod_if2.so.1
+[4.914s] -- Installing: /home/gautam/z_bot/install/pigpio/man/man1/pig2vcd.1
+[4.915s] -- Installing: /home/gautam/z_bot/install/pigpio/man/man1/pigpiod.1
+[4.915s] -- Installing: /home/gautam/z_bot/install/pigpio/man/man1/pigs.1
+[4.917s] -- Installing: /home/gautam/z_bot/install/pigpio/man/man3/pigpio.3
+[4.920s] -- Installing: /home/gautam/z_bot/install/pigpio/man/man3/pigpiod_if.3
+[4.921s] -- Installing: /home/gautam/z_bot/install/pigpio/man/man3/pigpiod_if2.3
+[5.237s] /usr/lib/python3/dist-packages/setuptools/_distutils/cmd.py:90: SetuptoolsDeprecationWarning: setup.py install is deprecated.
+[5.237s] !!
+[5.237s] 
+[5.237s]         ********************************************************************************
+[5.237s]         Please avoid running ``setup.py`` directly.
+[5.237s]         Instead, use pypa/build, pypa/installer or other
+[5.237s]         standards-based tools.
+[5.238s] 
+[5.238s]         See https://blog.ganssle.io/articles/2021/10/setup-py-deprecated.html for details.
+[5.238s]         ********************************************************************************
+[5.238s] 
+[5.238s] !!
+[5.238s]   self.initialize_options()
+[5.415s] /usr/lib/python3/dist-packages/setuptools/_distutils/cmd.py:90: EasyInstallDeprecationWarning: easy_install command is deprecated.
+[5.415s] !!
+[5.415s] 
+[5.415s]         ********************************************************************************
+[5.415s]         Please avoid running ``setup.py`` and ``easy_install``.
+[5.416s]         Instead, use pypa/build, pypa/installer or other
+[5.416s]         standards-based tools.
+[5.416s] 
+[5.416s]         See https://github.com/pypa/setuptools/issues/917 for details.
+[5.416s]         ********************************************************************************
+[5.416s] 
+[5.416s] !!
+[5.416s]   self.initialize_options()
+[5.713s] error: Cannot update time stamp of directory '/home/gautam/z_bot/pigpio/pigpio.egg-info'
+[5.792s] Invoked command in '/home/gautam/z_bot/build/pigpio' returned '0': PS1=(ros) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ /usr/bin/cmake --install /home/gautam/z_bot/build/pigpio

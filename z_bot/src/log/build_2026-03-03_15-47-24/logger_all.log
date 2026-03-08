@@ -1,0 +1,110 @@
+[-1772552842757424384.000s] DEBUG:colcon:Command line arguments: ['/home/gautam/.venvs/ros/bin/colcon', 'build']
+[-1772552842757424384.000s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=False, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=4, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=None, packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, verb_parser=<colcon_defaults.argument_parser.defaults.DefaultArgumentsDecorator object at 0x7fff4370c7d0>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x7fff436c1550>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x7fff436c1550>>)
+[-1772552842757424384.000s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[-1772552842757424384.000s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[-1772552842757424384.000s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[-1772552842757424384.000s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[-1772552842757424384.000s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[-1772552842757424384.000s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[-1772552842757424384.000s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/gautam/z_bot/src'
+[-1772552842757424384.000s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[-1772552842757424384.000s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[-1772552842757424384.000s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[-1772552842757424384.000s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[-1772552842757424384.000s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[-1772552842757424384.000s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[-1772552842757424384.000s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[-1772552842757424384.000s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[-1772552842757424384.000s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[-1772552842757424384.000s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[-1772552842757424384.000s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[-1772552842757424384.000s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[-1772552842757424384.000s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[-1772552842757424384.000s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[-1772552842757424384.000s] Level 1:colcon.colcon_core.package_identification:_identify(bot_brain) by extensions ['ignore', 'ignore_ament_install']
+[-1772552842757424384.000s] Level 1:colcon.colcon_core.package_identification:_identify(bot_brain) by extension 'ignore'
+[-1772552842757424384.000s] Level 1:colcon.colcon_core.package_identification:_identify(bot_brain) by extension 'ignore_ament_install'
+[-1772552842757424384.000s] Level 1:colcon.colcon_core.package_identification:_identify(bot_brain) by extensions ['colcon_pkg']
+[-1772552842757424384.000s] Level 1:colcon.colcon_core.package_identification:_identify(bot_brain) by extension 'colcon_pkg'
+[-1772552842757424384.000s] Level 1:colcon.colcon_core.package_identification:_identify(bot_brain) by extensions ['colcon_meta']
+[-1772552842757424384.000s] Level 1:colcon.colcon_core.package_identification:_identify(bot_brain) by extension 'colcon_meta'
+[-1772552842757424384.000s] Level 1:colcon.colcon_core.package_identification:_identify(bot_brain) by extensions ['ros']
+[-1772552842757424384.000s] Level 1:colcon.colcon_core.package_identification:_identify(bot_brain) by extension 'ros'
+[-1772552842757424384.000s] DEBUG:colcon.colcon_core.package_identification:Package 'bot_brain' with type 'ros.ament_python' and name 'bot_brain'
+[-1772552842757424384.000s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[-1772552842757424384.000s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[-1772552842757424384.000s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[-1772552842757424384.000s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[-1772552842757424384.000s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[-1772552842757424384.000s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[-1772552842757424384.000s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[-1772552842757424384.000s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[-1772552842757424384.000s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[-1772552842757424384.000s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[-1772552842757424384.000s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[-1772552842757424384.000s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[-1772552842757424384.000s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[-1772552842757424384.000s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[-1772552842757424384.000s] Level 5:colcon.colcon_core.verb:set package 'bot_brain' build argument 'cmake_args' from command line to 'None'
+[-1772552842757424384.000s] Level 5:colcon.colcon_core.verb:set package 'bot_brain' build argument 'cmake_target' from command line to 'None'
+[-1772552842757424384.000s] Level 5:colcon.colcon_core.verb:set package 'bot_brain' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[-1772552842757424384.000s] Level 5:colcon.colcon_core.verb:set package 'bot_brain' build argument 'cmake_clean_cache' from command line to 'False'
+[-1772552842757424384.000s] Level 5:colcon.colcon_core.verb:set package 'bot_brain' build argument 'cmake_clean_first' from command line to 'False'
+[-1772552842757424384.000s] Level 5:colcon.colcon_core.verb:set package 'bot_brain' build argument 'cmake_force_configure' from command line to 'False'
+[-1772552842757424384.000s] Level 5:colcon.colcon_core.verb:set package 'bot_brain' build argument 'ament_cmake_args' from command line to 'None'
+[-1772552842757424384.000s] Level 5:colcon.colcon_core.verb:set package 'bot_brain' build argument 'catkin_cmake_args' from command line to 'None'
+[-1772552842757424384.000s] Level 5:colcon.colcon_core.verb:set package 'bot_brain' build argument 'catkin_skip_building_tests' from command line to 'False'
+[-1772552842757424384.000s] DEBUG:colcon.colcon_core.verb:Building package 'bot_brain' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/gautam/z_bot/src/build/bot_brain', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/gautam/z_bot/src/install/bot_brain', 'merge_install': False, 'path': '/home/gautam/z_bot/src/bot_brain', 'symlink_install': False, 'test_result_base': None}
+[-1772552842757424384.000s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[-1772552842757424384.000s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[-1772552842757424384.000s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/gautam/z_bot/src/bot_brain' with build type 'ament_python'
+[-1772552842757424384.000s] Level 1:colcon.colcon_core.shell:create_environment_hook('bot_brain', 'ament_prefix_path')
+[-1772552842757424384.000s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[-1772552842757424384.000s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/gautam/z_bot/src/install/bot_brain/share/bot_brain/hook/ament_prefix_path.ps1'
+[-1772552842757424384.000s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/gautam/z_bot/src/install/bot_brain/share/bot_brain/hook/ament_prefix_path.dsv'
+[-1772552842757424384.000s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/gautam/z_bot/src/install/bot_brain/share/bot_brain/hook/ament_prefix_path.sh'
+[-1772552842757424384.000s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[-1772552842757424384.000s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[-1772552842757424384.000s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/gautam/z_bot/src/bot_brain'
+[-1772552842757424384.000s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[-1772552842757424384.000s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[-1772552842757424384.000s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/gautam/z_bot/src/bot_brain': PS1=(ros) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ PYTHONPATH=/home/gautam/z_bot/src/build/bot_brain/prefix_override:/home/gautam/.venvs/ros/lib/python3.13/site-packages/colcon_core/task/python/colcon_distutils_commands:/home/gautam/z_bot/src/install/bot_brain/lib/python3.13/site-packages:${PYTHONPATH} /home/gautam/.venvs/ros/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../build/bot_brain build --build-base /home/gautam/z_bot/src/build/bot_brain/build install --record /home/gautam/z_bot/src/build/bot_brain/install.log --single-version-externally-managed install_data
+[-1772552842757424384.000s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/gautam/z_bot/src/bot_brain' returned '0': PS1=(ros) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ PYTHONPATH=/home/gautam/z_bot/src/build/bot_brain/prefix_override:/home/gautam/.venvs/ros/lib/python3.13/site-packages/colcon_core/task/python/colcon_distutils_commands:/home/gautam/z_bot/src/install/bot_brain/lib/python3.13/site-packages:${PYTHONPATH} /home/gautam/.venvs/ros/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../build/bot_brain build --build-base /home/gautam/z_bot/src/build/bot_brain/build install --record /home/gautam/z_bot/src/build/bot_brain/install.log --single-version-externally-managed install_data
+[-1772552842757424384.000s] Level 1:colcon.colcon_core.environment:checking '/home/gautam/z_bot/src/install/bot_brain' for CMake module files
+[-1772552842757424384.000s] Level 1:colcon.colcon_core.environment:checking '/home/gautam/z_bot/src/install/bot_brain' for CMake config files
+[-1772552842757424384.000s] Level 1:colcon.colcon_core.environment:checking '/home/gautam/z_bot/src/install/bot_brain/lib'
+[-1772552842757424384.000s] Level 1:colcon.colcon_core.environment:checking '/home/gautam/z_bot/src/install/bot_brain/bin'
+[-1772552842757424384.000s] Level 1:colcon.colcon_core.environment:checking '/home/gautam/z_bot/src/install/bot_brain/lib/pkgconfig/bot_brain.pc'
+[-1772552842757424384.000s] Level 1:colcon.colcon_core.environment:checking '/home/gautam/z_bot/src/install/bot_brain/lib/python3.13/site-packages'
+[-1772552842757424384.000s] Level 1:colcon.colcon_core.shell:create_environment_hook('bot_brain', 'pythonpath')
+[-1772552842757424384.000s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/gautam/z_bot/src/install/bot_brain/share/bot_brain/hook/pythonpath.ps1'
+[-1772552842757424384.000s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/gautam/z_bot/src/install/bot_brain/share/bot_brain/hook/pythonpath.dsv'
+[-1772552842757424384.000s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/gautam/z_bot/src/install/bot_brain/share/bot_brain/hook/pythonpath.sh'
+[-1772552842757424384.000s] Level 1:colcon.colcon_core.environment:checking '/home/gautam/z_bot/src/install/bot_brain/bin'
+[-1772552842757424384.000s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(bot_brain)
+[-1772552842757424384.000s] INFO:colcon.colcon_core.shell:Creating package script '/home/gautam/z_bot/src/install/bot_brain/share/bot_brain/package.ps1'
+[-1772552842757424384.000s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/gautam/z_bot/src/install/bot_brain/share/bot_brain/package.dsv'
+[-1772552842757424384.000s] INFO:colcon.colcon_core.shell:Creating package script '/home/gautam/z_bot/src/install/bot_brain/share/bot_brain/package.sh'
+[-1772552842757424384.000s] INFO:colcon.colcon_core.shell:Creating package script '/home/gautam/z_bot/src/install/bot_brain/share/bot_brain/package.bash'
+[-1772552842757424384.000s] INFO:colcon.colcon_core.shell:Creating package script '/home/gautam/z_bot/src/install/bot_brain/share/bot_brain/package.zsh'
+[-1772552842757424384.000s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/gautam/z_bot/src/install/bot_brain/share/colcon-core/packages/bot_brain)
+[-1772552842757424384.000s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[-1772552842757424384.000s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[-1772552842757424384.000s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[-1772552842757424384.000s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[-1772552842757424384.000s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.notify_send': Could not find 'notify-send'
+[-1772552842757424384.000s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[-1772552842757424384.000s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[-1772552842757424384.000s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[-1772552842757424384.000s] DEBUG:colcon.colcon_notification.desktop_notification.notify2:Failed to initialize notify2: org.freedesktop.DBus.Error.ServiceUnknown: The name org.freedesktop.Notifications was not provided by any .service files
+[-1772552842757424384.000s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[-1772552842757424384.000s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/gautam/z_bot/src/install/local_setup.ps1'
+[-1772552842757424384.000s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/gautam/z_bot/src/install/_local_setup_util_ps1.py'
+[-1772552842757424384.000s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/gautam/z_bot/src/install/setup.ps1'
+[-1772552842757424384.000s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/gautam/z_bot/src/install/local_setup.sh'
+[-1772552842757424384.000s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/gautam/z_bot/src/install/_local_setup_util_sh.py'
+[-1772552842757424384.000s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/gautam/z_bot/src/install/setup.sh'
+[-1772552842757424384.000s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/gautam/z_bot/src/install/local_setup.bash'
+[-1772552842757424384.000s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/gautam/z_bot/src/install/setup.bash'
+[-1772552842757424384.000s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/gautam/z_bot/src/install/local_setup.zsh'
+[-1772552842757424384.000s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/gautam/z_bot/src/install/setup.zsh'

@@ -1,0 +1,6 @@
+Invoking command in '/home/gautam/z_bot/build/pigpio': PS1=(ros) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ /usr/bin/cmake /home/gautam/z_bot/pigpio -DCMAKE_INSTALL_PREFIX=/home/gautam/z_bot/install/pigpio
+Invoked command in '/home/gautam/z_bot/build/pigpio' returned '0': PS1=(ros) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ /usr/bin/cmake /home/gautam/z_bot/pigpio -DCMAKE_INSTALL_PREFIX=/home/gautam/z_bot/install/pigpio
+Invoking command in '/home/gautam/z_bot/build/pigpio': PS1=(ros) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ /usr/bin/cmake --build /home/gautam/z_bot/build/pigpio -- -j4 -l4
+Invoked command in '/home/gautam/z_bot/build/pigpio' returned '0': PS1=(ros) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ /usr/bin/cmake --build /home/gautam/z_bot/build/pigpio -- -j4 -l4
+Invoking command in '/home/gautam/z_bot/build/pigpio': PS1=(ros) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ /usr/bin/cmake --install /home/gautam/z_bot/build/pigpio
+Invoked command in '/home/gautam/z_bot/build/pigpio' returned '0': PS1=(ros) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ /usr/bin/cmake --install /home/gautam/z_bot/build/pigpio

@@ -1,0 +1,26 @@
+[1.029s] Invoking command in '/home/gautam/z_bot/build/bot_brain': PS1=(ros) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ PYTHONPATH=/home/gautam/z_bot/build/bot_brain/prefix_override:/home/gautam/.venvs/ros/lib/python3.13/site-packages/colcon_core/task/python/colcon_distutils_commands:/home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages:${PYTHONPATH} /home/gautam/.venvs/ros/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/gautam/z_bot/build/bot_brain/build --no-deps symlink_data
+[1.433s] running develop
+[1.667s] running egg_info
+[1.693s] creating bot_brain.egg-info
+[1.693s] writing bot_brain.egg-info/PKG-INFO
+[1.693s] writing dependency_links to bot_brain.egg-info/dependency_links.txt
+[1.694s] writing entry points to bot_brain.egg-info/entry_points.txt
+[1.694s] writing requirements to bot_brain.egg-info/requires.txt
+[1.694s] writing top-level names to bot_brain.egg-info/top_level.txt
+[1.694s] writing manifest file 'bot_brain.egg-info/SOURCES.txt'
+[1.747s] reading manifest file 'bot_brain.egg-info/SOURCES.txt'
+[1.748s] writing manifest file 'bot_brain.egg-info/SOURCES.txt'
+[1.774s] running build_ext
+[1.775s] Creating /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot-brain.egg-link (link to .)
+[1.775s] Installing brain script to /home/gautam/z_bot/install/bot_brain/lib/bot_brain
+[1.776s] Installing camera script to /home/gautam/z_bot/install/bot_brain/lib/bot_brain
+[1.776s] Installing imu script to /home/gautam/z_bot/install/bot_brain/lib/bot_brain
+[1.776s] Installing ultrasonic script to /home/gautam/z_bot/install/bot_brain/lib/bot_brain
+[1.776s] Installing yolo script to /home/gautam/z_bot/install/bot_brain/lib/bot_brain
+[1.776s] 
+[1.776s] Installed /home/gautam/z_bot/build/bot_brain
+[1.776s] running symlink_data
+[1.777s] creating /home/gautam/z_bot/install/bot_brain/share/ament_index/resource_index/packages
+[1.777s] symbolically linking /home/gautam/z_bot/build/bot_brain/resource/bot_brain -> /home/gautam/z_bot/install/bot_brain/share/ament_index/resource_index/packages
+[1.777s] symbolically linking /home/gautam/z_bot/build/bot_brain/package.xml -> /home/gautam/z_bot/install/bot_brain/share/bot_brain
+[1.854s] Invoked command in '/home/gautam/z_bot/build/bot_brain' returned '0': PS1=(ros) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ PYTHONPATH=/home/gautam/z_bot/build/bot_brain/prefix_override:/home/gautam/.venvs/ros/lib/python3.13/site-packages/colcon_core/task/python/colcon_distutils_commands:/home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages:${PYTHONPATH} /home/gautam/.venvs/ros/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/gautam/z_bot/build/bot_brain/build --no-deps symlink_data

@@ -1,0 +1,121 @@
+[0mCMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+[0m
+-- The C compiler identification is GNU 14.2.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE
+[33mCMake Warning (dev) at /usr/share/cmake-3.31/Modules/FindPackageHandleStandardArgs.cmake:441 (message):
+-- Found rt: /usr/lib/aarch64-linux-gnu/librt.a
+  The package name passed to `find_package_handle_standard_args` (rt) does
+  not match the name of the calling package (RT).  This can lead to problems
+  in calling code that expects `find_package` result variables (e.g.,
+  `_FOUND`) to follow a certain pattern.
+Call Stack (most recent call first):
+  cmake/FindRT.cmake:28 (FIND_PACKAGE_HANDLE_STANDARD_ARGS)
+  CMakeLists.txt:8 (find_package)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+[0m
+-- Performing Test COMPILER_HAS_HIDDEN_VISIBILITY
+-- Performing Test COMPILER_HAS_HIDDEN_VISIBILITY - Success
+-- Performing Test COMPILER_HAS_HIDDEN_INLINE_VISIBILITY
+-- Performing Test COMPILER_HAS_HIDDEN_INLINE_VISIBILITY - Failed
+-- Performing Test COMPILER_HAS_DEPRECATED_ATTR
+-- Performing Test COMPILER_HAS_DEPRECATED_ATTR - Success
+-- Configuring done (1.6s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/gautam/z_bot/build/pigpio
+[  4%] [32mBuilding C object CMakeFiles/pigpio.dir/pigpio.c.o[0m
+[  8%] [32mBuilding C object CMakeFiles/pigs.dir/pigs.c.o[0m
+[ 13%] [32mBuilding C object CMakeFiles/pigpiod_if2.dir/pigpiod_if2.c.o[0m
+[ 17%] [32mBuilding C object CMakeFiles/pigpiod_if.dir/pigpiod_if.c.o[0m
+[ 21%] [32mBuilding C object CMakeFiles/pigs.dir/command.c.o[0m
+[ 26%] [32mBuilding C object CMakeFiles/pigpiod_if.dir/command.c.o[0m
+[ 30%] [32mBuilding C object CMakeFiles/pigpiod_if2.dir/command.c.o[0m
+[ 34%] [32m[1mLinking C executable pigs[0m
+[ 34%] Built target pigs
+[ 39%] [32m[1mLinking C shared library libpigpiod_if.so[0m
+[ 43%] [32m[1mLinking C shared library libpigpiod_if2.so[0m
+[ 43%] Built target pigpiod_if
+[ 43%] Built target pigpiod_if2
+[ 47%] [32mBuilding C object CMakeFiles/pigpio.dir/command.c.o[0m
+[ 52%] [32m[1mLinking C shared library libpigpio.so[0m
+[ 52%] Built target pigpio
+[ 65%] [32mBuilding C object CMakeFiles/x_pigpiod_if2.dir/x_pigpiod_if2.c.o[0m
+[ 65%] [32mBuilding C object CMakeFiles/x_pigpiod_if.dir/x_pigpiod_if.c.o[0m
+[ 65%] [32mBuilding C object CMakeFiles/pig2vcd.dir/pig2vcd.c.o[0m
+[ 69%] [32mBuilding C object CMakeFiles/pig2vcd.dir/command.c.o[0m
+[ 73%] [32m[1mLinking C executable x_pigpiod_if[0m
+[ 78%] [32m[1mLinking C executable x_pigpiod_if2[0m
+[ 82%] [32m[1mLinking C executable pig2vcd[0m
+[ 82%] Built target x_pigpiod_if2
+[ 82%] Built target x_pigpiod_if
+[ 82%] Built target pig2vcd
+[ 86%] [32mBuilding C object CMakeFiles/x_pigpio.dir/x_pigpio.c.o[0m
+[ 91%] [32m[1mLinking C executable x_pigpio[0m
+[ 91%] Built target x_pigpio
+[ 95%] [32mBuilding C object CMakeFiles/pigpiod.dir/pigpiod.c.o[0m
+[100%] [32m[1mLinking C executable pigpiod[0m
+[100%] Built target pigpiod
+-- Install configuration: ""
+-- Installing: /home/gautam/z_bot/install/pigpio/lib/libpigpio.so
+-- Installing: /home/gautam/z_bot/install/pigpio/lib/libpigpiod_if.so
+-- Installing: /home/gautam/z_bot/install/pigpio/lib/libpigpiod_if2.so
+-- Installing: /home/gautam/z_bot/install/pigpio/bin/pig2vcd
+-- Installing: /home/gautam/z_bot/install/pigpio/bin/pigpiod
+-- Set non-toolchain portion of runtime path of "/home/gautam/z_bot/install/pigpio/bin/pigpiod" to ""
+-- Installing: /home/gautam/z_bot/install/pigpio/bin/pigs
+-- Installing: /home/gautam/z_bot/install/pigpio/lib/cmake/pigpio/pigpioTargets.cmake
+-- Installing: /home/gautam/z_bot/install/pigpio/lib/cmake/pigpio/pigpioTargets-noconfig.cmake
+-- Installing: /home/gautam/z_bot/install/pigpio/lib/cmake/pigpio/pigpioConfig.cmake
+-- Installing: /home/gautam/z_bot/install/pigpio/lib/cmake/pigpio/pigpioConfigVersion.cmake
+-- Installing: /home/gautam/z_bot/install/pigpio/include/pigpio.h
+-- Installing: /home/gautam/z_bot/install/pigpio/include/pigpiod_if.h
+-- Installing: /home/gautam/z_bot/install/pigpio/include/pigpiod_if2.h
+-- Installing: /home/gautam/z_bot/install/pigpio/man/man1/libpigpio.so.1
+-- Installing: /home/gautam/z_bot/install/pigpio/man/man1/libpigpiod_if.so.1
+-- Installing: /home/gautam/z_bot/install/pigpio/man/man1/libpigpiod_if2.so.1
+-- Installing: /home/gautam/z_bot/install/pigpio/man/man1/pig2vcd.1
+-- Installing: /home/gautam/z_bot/install/pigpio/man/man1/pigpiod.1
+-- Installing: /home/gautam/z_bot/install/pigpio/man/man1/pigs.1
+-- Installing: /home/gautam/z_bot/install/pigpio/man/man3/pigpio.3
+-- Installing: /home/gautam/z_bot/install/pigpio/man/man3/pigpiod_if.3
+-- Installing: /home/gautam/z_bot/install/pigpio/man/man3/pigpiod_if2.3
+/usr/lib/python3/dist-packages/setuptools/_distutils/cmd.py:90: SetuptoolsDeprecationWarning: setup.py install is deprecated.
+!!
+
+        ********************************************************************************
+        Please avoid running ``setup.py`` directly.
+        Instead, use pypa/build, pypa/installer or other
+        standards-based tools.
+
+        See https://blog.ganssle.io/articles/2021/10/setup-py-deprecated.html for details.
+        ********************************************************************************
+
+!!
+  self.initialize_options()
+/usr/lib/python3/dist-packages/setuptools/_distutils/cmd.py:90: EasyInstallDeprecationWarning: easy_install command is deprecated.
+!!
+
+        ********************************************************************************
+        Please avoid running ``setup.py`` and ``easy_install``.
+        Instead, use pypa/build, pypa/installer or other
+        standards-based tools.
+
+        See https://github.com/pypa/setuptools/issues/917 for details.
+        ********************************************************************************
+
+!!
+  self.initialize_options()
+error: Cannot update time stamp of directory '/home/gautam/z_bot/pigpio/pigpio.egg-info'

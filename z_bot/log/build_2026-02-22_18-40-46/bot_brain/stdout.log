@@ -1,0 +1,24 @@
+running develop
+running egg_info
+creating bot_brain.egg-info
+writing bot_brain.egg-info/PKG-INFO
+writing dependency_links to bot_brain.egg-info/dependency_links.txt
+writing entry points to bot_brain.egg-info/entry_points.txt
+writing requirements to bot_brain.egg-info/requires.txt
+writing top-level names to bot_brain.egg-info/top_level.txt
+writing manifest file 'bot_brain.egg-info/SOURCES.txt'
+reading manifest file 'bot_brain.egg-info/SOURCES.txt'
+writing manifest file 'bot_brain.egg-info/SOURCES.txt'
+running build_ext
+Creating /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot-brain.egg-link (link to .)
+Installing brain script to /home/gautam/z_bot/install/bot_brain/lib/bot_brain
+Installing camera script to /home/gautam/z_bot/install/bot_brain/lib/bot_brain
+Installing imu script to /home/gautam/z_bot/install/bot_brain/lib/bot_brain
+Installing ultrasonic script to /home/gautam/z_bot/install/bot_brain/lib/bot_brain
+Installing yolo script to /home/gautam/z_bot/install/bot_brain/lib/bot_brain
+
+Installed /home/gautam/z_bot/build/bot_brain
+running symlink_data
+creating /home/gautam/z_bot/install/bot_brain/share/ament_index/resource_index/packages
+symbolically linking /home/gautam/z_bot/build/bot_brain/resource/bot_brain -> /home/gautam/z_bot/install/bot_brain/share/ament_index/resource_index/packages
+symbolically linking /home/gautam/z_bot/build/bot_brain/package.xml -> /home/gautam/z_bot/install/bot_brain/share/bot_brain

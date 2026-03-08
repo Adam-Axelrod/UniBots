@@ -1,0 +1,17 @@
+/home/gautam/z_bot/build/pigpio/CMakeFiles/pigpio.dir
+/home/gautam/z_bot/build/pigpio/CMakeFiles/pigpiod_if.dir
+/home/gautam/z_bot/build/pigpio/CMakeFiles/pigpiod_if2.dir
+/home/gautam/z_bot/build/pigpio/CMakeFiles/x_pigpio.dir
+/home/gautam/z_bot/build/pigpio/CMakeFiles/x_pigpiod_if.dir
+/home/gautam/z_bot/build/pigpio/CMakeFiles/x_pigpiod_if2.dir
+/home/gautam/z_bot/build/pigpio/CMakeFiles/pigpiod.dir
+/home/gautam/z_bot/build/pigpio/CMakeFiles/pigs.dir
+/home/gautam/z_bot/build/pigpio/CMakeFiles/pig2vcd.dir
+/home/gautam/z_bot/build/pigpio/CMakeFiles/package.dir
+/home/gautam/z_bot/build/pigpio/CMakeFiles/package_source.dir
+/home/gautam/z_bot/build/pigpio/CMakeFiles/edit_cache.dir
+/home/gautam/z_bot/build/pigpio/CMakeFiles/rebuild_cache.dir
+/home/gautam/z_bot/build/pigpio/CMakeFiles/list_install_components.dir
+/home/gautam/z_bot/build/pigpio/CMakeFiles/install.dir
+/home/gautam/z_bot/build/pigpio/CMakeFiles/install/local.dir
+/home/gautam/z_bot/build/pigpio/CMakeFiles/install/strip.dir

@@ -1,0 +1,234 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install"
+		],
+		"files" : 
+		[
+			"CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 54,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 74,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 83,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 91,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 99,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 107,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 122,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"libpigpio.so"
+			],
+			"targetId" : "pigpio::@6890427a1f51a3e7e1df",
+			"targetIndex" : 1,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"libpigpiod_if.so"
+			],
+			"targetId" : "pigpiod_if::@6890427a1f51a3e7e1df",
+			"targetIndex" : 3,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"libpigpiod_if2.so"
+			],
+			"targetId" : "pigpiod_if2::@6890427a1f51a3e7e1df",
+			"targetIndex" : 4,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "bin",
+			"paths" : 
+			[
+				"pig2vcd"
+			],
+			"targetId" : "pig2vcd::@6890427a1f51a3e7e1df",
+			"targetIndex" : 0,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "bin",
+			"paths" : 
+			[
+				"pigpiod"
+			],
+			"targetId" : "pigpiod::@6890427a1f51a3e7e1df",
+			"targetIndex" : 2,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "bin",
+			"paths" : 
+			[
+				"pigs"
+			],
+			"targetId" : "pigs::@6890427a1f51a3e7e1df",
+			"targetIndex" : 5,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 2,
+			"component" : "Unspecified",
+			"destination" : "lib/cmake/pigpio",
+			"exportName" : "pigpioTargets",
+			"exportTargets" : 
+			[
+				{
+					"id" : "pigpio::@6890427a1f51a3e7e1df",
+					"index" : 1
+				},
+				{
+					"id" : "pigpiod_if::@6890427a1f51a3e7e1df",
+					"index" : 3
+				},
+				{
+					"id" : "pigpiod_if2::@6890427a1f51a3e7e1df",
+					"index" : 4
+				},
+				{
+					"id" : "pig2vcd::@6890427a1f51a3e7e1df",
+					"index" : 0
+				},
+				{
+					"id" : "pigpiod::@6890427a1f51a3e7e1df",
+					"index" : 2
+				},
+				{
+					"id" : "pigs::@6890427a1f51a3e7e1df",
+					"index" : 5
+				}
+			],
+			"paths" : 
+			[
+				"CMakeFiles/Export/e41ee19b7ad2f70525cf8c6adfd2f556/pigpioTargets.cmake"
+			],
+			"type" : "export"
+		},
+		{
+			"backtrace" : 3,
+			"component" : "Unspecified",
+			"destination" : "lib/cmake/pigpio",
+			"paths" : 
+			[
+				"cmake/pigpioConfig.cmake",
+				"/home/gautam/z_bot/build/pigpio/pigpioConfigVersion.cmake"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 4,
+			"component" : "Unspecified",
+			"destination" : "include",
+			"paths" : 
+			[
+				"pigpio.h",
+				"pigpiod_if.h",
+				"pigpiod_if2.h"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 5,
+			"component" : "Unspecified",
+			"destination" : "man/man1",
+			"paths" : 
+			[
+				"libpigpio.so.1",
+				"libpigpiod_if.so.1",
+				"libpigpiod_if2.so.1",
+				"pig2vcd.1",
+				"pigpiod.1",
+				"pigs.1"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 6,
+			"component" : "Unspecified",
+			"destination" : "man/man3",
+			"paths" : 
+			[
+				"pigpio.3",
+				"pigpiod_if.3",
+				"pigpiod_if2.3"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 7,
+			"component" : "Unspecified",
+			"type" : "code"
+		}
+	],
+	"paths" : 
+	{
+		"build" : ".",
+		"source" : "."
+	}
+}

@@ -1,0 +1,46 @@
+[0.000000] (-) TimerEvent: {}
+[0.000192] (bot_brain) JobQueued: {'identifier': 'bot_brain', 'dependencies': OrderedDict()}
+[0.000553] (bot_brain) JobStarted: {'identifier': 'bot_brain'}
+[0.099787] (-) TimerEvent: {}
+[0.200070] (-) TimerEvent: {}
+[0.300353] (-) TimerEvent: {}
+[0.400623] (-) TimerEvent: {}
+[0.500877] (-) TimerEvent: {}
+[0.601127] (-) TimerEvent: {}
+[0.701330] (-) TimerEvent: {}
+[0.801518] (-) TimerEvent: {}
+[0.901690] (-) TimerEvent: {}
+[1.001866] (-) TimerEvent: {}
+[1.033334] (bot_brain) Command: {'cmd': ['/home/gautam/.venvs/ros/bin/python3', '-W', 'ignore:setup.py install is deprecated', '-W', 'ignore:easy_install command is deprecated', 'setup.py', 'develop', '--editable', '--build-directory', '/home/gautam/z_bot/build/bot_brain/build', '--no-deps', 'symlink_data', '--force'], 'cwd': '/home/gautam/z_bot/build/bot_brain', 'env': {'USER': 'gautam', 'SSH_CLIENT': '10.243.142.70 43664 22', 'TEXTDOMAIN': 'pam_chksshpwd', 'XDG_SESSION_TYPE': 'tty', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/lib/aarch64-linux-gnu:/opt/ros/jazzy/lib', 'MOTD_SHOWN': 'pam', 'HOME': '/home/gautam', 'OLDPWD': '/home/gautam/z_bot/src', 'SSH_TTY': '/dev/pts/1', 'ROS_PYTHON_VERSION': '3', 'PS1': '(ros) \\[\\e]0;\\u@\\h: \\w\\a\\]${debian_chroot:+($debian_chroot)}\\u@\\h:\\w\\$', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLCON_PREFIX_PATH': '/home/gautam/z_bot/install:/home/gautam/ros2_bot/install:/home/gautam/z_bot/src/install', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'gautam', '_': '/home/gautam/.venvs/ros/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'TERM': 'xterm-kitty', 'XDG_SESSION_ID': '7', 'PATH': '/home/gautam/.venvs/ros/bin:/home/gautam/.local/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games', 'XDG_RUNTIME_DIR': '/run/user/1000', 'LANG': 'en_GB.UTF-8', 'VIRTUAL_ENV_PROMPT': 'ros', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.7z=01;31:*.ace=01;31:*.alz=01;31:*.apk=01;31:*.arc=01;31:*.arj=01;31:*.bz=01;31:*.bz2=01;31:*.cab=01;31:*.cpio=01;31:*.crate=01;31:*.deb=01;31:*.drpm=01;31:*.dwm=01;31:*.dz=01;31:*.ear=01;31:*.egg=01;31:*.esd=01;31:*.gz=01;31:*.jar=01;31:*.lha=01;31:*.lrz=01;31:*.lz=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.lzo=01;31:*.pyz=01;31:*.rar=01;31:*.rpm=01;31:*.rz=01;31:*.sar=01;31:*.swm=01;31:*.t7z=01;31:*.tar=01;31:*.taz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tgz=01;31:*.tlz=01;31:*.txz=01;31:*.tz=01;31:*.tzo=01;31:*.tzst=01;31:*.udeb=01;31:*.war=01;31:*.whl=01;31:*.wim=01;31:*.xz=01;31:*.z=01;31:*.zip=01;31:*.zoo=01;31:*.zst=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.jxl=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'AMENT_PREFIX_PATH': '/home/gautam/z_bot/src/install/bot_brain:/home/gautam/z_bot/install/bot_brain:/home/gautam/ros2_bot/install/yolo_pi_detector:/opt/ros/jazzy', 'SHELL': '/bin/bash', 'NO_AT_BRIDGE': '1', 'VIRTUAL_ENV': '/home/gautam/.venvs/ros', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'PWD': '/home/gautam/z_bot/build/bot_brain', 'LC_ALL': 'en_US.UTF-8', 'SSH_CONNECTION': '10.243.142.70 43664 10.243.130.59 22', 'PYTHONPATH': '/home/gautam/z_bot/build/bot_brain/prefix_override:/home/gautam/.venvs/ros/lib/python3.13/site-packages/colcon_core/task/python/colcon_distutils_commands:/home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages:/home/gautam/z_bot/src/install/bot_brain/lib/python3.13/site-packages:/home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages:/home/gautam/ros2_bot/build/yolo_pi_detector:/home/gautam/ros2_bot/install/yolo_pi_detector/lib/python3.13/site-packages:/opt/ros/jazzy/lib/python3.13/site-packages', 'COLCON': '1'}, 'shell': False}
+[1.101978] (-) TimerEvent: {}
+[1.202260] (-) TimerEvent: {}
+[1.302451] (-) TimerEvent: {}
+[1.402628] (-) TimerEvent: {}
+[1.431910] (bot_brain) StdoutLine: {'line': b'running develop\n'}
+[1.502698] (-) TimerEvent: {}
+[1.602885] (-) TimerEvent: {}
+[1.668758] (bot_brain) StdoutLine: {'line': b'running egg_info\n'}
+[1.694454] (bot_brain) StdoutLine: {'line': b'writing bot_brain.egg-info/PKG-INFO\n'}
+[1.695218] (bot_brain) StdoutLine: {'line': b'writing dependency_links to bot_brain.egg-info/dependency_links.txt\n'}
+[1.696452] (bot_brain) StdoutLine: {'line': b'writing entry points to bot_brain.egg-info/entry_points.txt\n'}
+[1.697672] (bot_brain) StdoutLine: {'line': b'writing requirements to bot_brain.egg-info/requires.txt\n'}
+[1.698725] (bot_brain) StdoutLine: {'line': b'writing top-level names to bot_brain.egg-info/top_level.txt\n'}
+[1.702943] (-) TimerEvent: {}
+[1.752722] (bot_brain) StdoutLine: {'line': b"reading manifest file 'bot_brain.egg-info/SOURCES.txt'\n"}
+[1.754080] (bot_brain) StdoutLine: {'line': b"writing manifest file 'bot_brain.egg-info/SOURCES.txt'\n"}
+[1.780779] (bot_brain) StdoutLine: {'line': b'running build_ext\n'}
+[1.781624] (bot_brain) StdoutLine: {'line': b'Creating /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot-brain.egg-link (link to .)\n'}
+[1.782453] (bot_brain) StdoutLine: {'line': b'Installing brain script to /home/gautam/z_bot/install/bot_brain/lib/bot_brain\n'}
+[1.782684] (bot_brain) StdoutLine: {'line': b'Installing camera script to /home/gautam/z_bot/install/bot_brain/lib/bot_brain\n'}
+[1.782830] (bot_brain) StdoutLine: {'line': b'Installing imu script to /home/gautam/z_bot/install/bot_brain/lib/bot_brain\n'}
+[1.782963] (bot_brain) StdoutLine: {'line': b'Installing ultrasonic script to /home/gautam/z_bot/install/bot_brain/lib/bot_brain\n'}
+[1.783092] (bot_brain) StdoutLine: {'line': b'Installing yolo script to /home/gautam/z_bot/install/bot_brain/lib/bot_brain\n'}
+[1.783311] (bot_brain) StdoutLine: {'line': b'\n'}
+[1.783374] (bot_brain) StdoutLine: {'line': b'Installed /home/gautam/z_bot/build/bot_brain\n'}
+[1.783454] (bot_brain) StdoutLine: {'line': b'running symlink_data\n'}
+[1.783731] (bot_brain) StdoutLine: {'line': b'symbolically linking /home/gautam/z_bot/build/bot_brain/resource/bot_brain -> /home/gautam/z_bot/install/bot_brain/share/ament_index/resource_index/packages\n'}
+[1.783927] (bot_brain) StdoutLine: {'line': b'symbolically linking /home/gautam/z_bot/build/bot_brain/package.xml -> /home/gautam/z_bot/install/bot_brain/share/bot_brain\n'}
+[1.803027] (-) TimerEvent: {}
+[1.860220] (bot_brain) CommandEnded: {'returncode': 0}
+[1.885193] (bot_brain) JobEnded: {'identifier': 'bot_brain', 'rc': 0}
+[1.885909] (-) EventReactorShutdown: {}

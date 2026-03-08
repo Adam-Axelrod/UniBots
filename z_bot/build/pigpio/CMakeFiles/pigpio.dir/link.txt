@@ -1,0 +1,1 @@
+/usr/bin/cc -fPIC -Wl,--dependency-file=CMakeFiles/pigpio.dir/link.d -shared -Wl,-soname,libpigpio.so -o libpigpio.so CMakeFiles/pigpio.dir/pigpio.c.o CMakeFiles/pigpio.dir/command.c.o

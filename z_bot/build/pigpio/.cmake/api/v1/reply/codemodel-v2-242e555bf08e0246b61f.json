@@ -1,0 +1,133 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-8c1ba32ab55054985efa.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "pigpio",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "pig2vcd::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-pig2vcd-192ee20b6eb72f7a4585.json",
+					"name" : "pig2vcd",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "pigpio::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-pigpio-3070de66cb2a5b36ab77.json",
+					"name" : "pigpio",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "pigpiod::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-pigpiod-b9369a9135ec5a2afd85.json",
+					"name" : "pigpiod",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "pigpiod_if::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-pigpiod_if-d03cc12c0c731dc2e3a3.json",
+					"name" : "pigpiod_if",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "pigpiod_if2::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-pigpiod_if2-a54405c5d94442e4d095.json",
+					"name" : "pigpiod_if2",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "pigs::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-pigs-18d398ba5266bd8dd789.json",
+					"name" : "pigs",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "x_pigpio::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-x_pigpio-c45bd16342059e17dfd1.json",
+					"name" : "x_pigpio",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "x_pigpiod_if::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-x_pigpiod_if-c0b9d40592a139f9d259.json",
+					"name" : "x_pigpiod_if",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "x_pigpiod_if2::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-x_pigpiod_if2-91ef6f5d1d9852725a76.json",
+					"name" : "x_pigpiod_if2",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/gautam/z_bot/build/pigpio",
+		"source" : "/home/gautam/z_bot/pigpio"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}

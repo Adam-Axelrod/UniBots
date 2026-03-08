@@ -1,0 +1,107 @@
+[0.000000] (-) TimerEvent: {}
+[0.000299] (bot_brain) JobQueued: {'identifier': 'bot_brain', 'dependencies': OrderedDict()}
+[0.000584] (bot_brain) JobStarted: {'identifier': 'bot_brain'}
+[0.099758] (-) TimerEvent: {}
+[0.200019] (-) TimerEvent: {}
+[0.300254] (-) TimerEvent: {}
+[0.404361] (-) TimerEvent: {}
+[0.504630] (-) TimerEvent: {}
+[0.604898] (-) TimerEvent: {}
+[0.705160] (-) TimerEvent: {}
+[0.805702] (-) TimerEvent: {}
+[0.905964] (-) TimerEvent: {}
+[1.008435] (-) TimerEvent: {}
+[1.108688] (-) TimerEvent: {}
+[1.184705] (bot_brain) Command: {'cmd': ['/home/gautam/.venvs/ros/bin/python3', '-W', 'ignore:setup.py install is deprecated', '-W', 'ignore:easy_install command is deprecated', 'setup.py', 'develop', '--uninstall', '--editable', '--build-directory', '/home/gautam/z_bot/build/bot_brain/build'], 'cwd': '/home/gautam/z_bot/build/bot_brain', 'env': {'USER': 'gautam', 'SSH_CLIENT': '172.20.10.3 46352 22', 'TEXTDOMAIN': 'pam_chksshpwd', 'XDG_SESSION_TYPE': 'tty', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/lib/aarch64-linux-gnu:/opt/ros/jazzy/lib', 'MOTD_SHOWN': 'pam', 'HOME': '/home/gautam', 'OLDPWD': '/home/gautam', 'SSH_TTY': '/dev/pts/1', 'ROS_PYTHON_VERSION': '3', 'PS1': '(ros) \\[\\e]0;\\u@\\h: \\w\\a\\]${debian_chroot:+($debian_chroot)}\\u@\\h:\\w\\$', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLCON_PREFIX_PATH': '/home/gautam/ros2_bot/install', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'gautam', '_': '/home/gautam/.venvs/ros/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'TERM': 'xterm-kitty', 'XDG_SESSION_ID': '5', 'PATH': '/home/gautam/.venvs/ros/bin:/home/gautam/.local/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games', 'XDG_RUNTIME_DIR': '/run/user/1000', 'LANG': 'en_GB.UTF-8', 'VIRTUAL_ENV_PROMPT': 'ros', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.7z=01;31:*.ace=01;31:*.alz=01;31:*.apk=01;31:*.arc=01;31:*.arj=01;31:*.bz=01;31:*.bz2=01;31:*.cab=01;31:*.cpio=01;31:*.crate=01;31:*.deb=01;31:*.drpm=01;31:*.dwm=01;31:*.dz=01;31:*.ear=01;31:*.egg=01;31:*.esd=01;31:*.gz=01;31:*.jar=01;31:*.lha=01;31:*.lrz=01;31:*.lz=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.lzo=01;31:*.pyz=01;31:*.rar=01;31:*.rpm=01;31:*.rz=01;31:*.sar=01;31:*.swm=01;31:*.t7z=01;31:*.tar=01;31:*.taz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tgz=01;31:*.tlz=01;31:*.txz=01;31:*.tz=01;31:*.tzo=01;31:*.tzst=01;31:*.udeb=01;31:*.war=01;31:*.whl=01;31:*.wim=01;31:*.xz=01;31:*.z=01;31:*.zip=01;31:*.zoo=01;31:*.zst=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.jxl=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'AMENT_PREFIX_PATH': '/home/gautam/ros2_bot/install/yolo_pi_detector:/opt/ros/jazzy', 'SHELL': '/bin/bash', 'NO_AT_BRIDGE': '1', 'VIRTUAL_ENV': '/home/gautam/.venvs/ros', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'PWD': '/home/gautam/z_bot/build/bot_brain', 'LC_ALL': 'en_US.UTF-8', 'SSH_CONNECTION': '172.20.10.3 46352 172.20.10.5 22', 'PYTHONPATH': '/home/gautam/z_bot/build/bot_brain/prefix_override:/home/gautam/.venvs/ros/lib/python3.13/site-packages/colcon_core/task/python/colcon_distutils_commands:/home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages:/home/gautam/ros2_bot/build/yolo_pi_detector:/home/gautam/ros2_bot/install/yolo_pi_detector/lib/python3.13/site-packages:/opt/ros/jazzy/lib/python3.13/site-packages', 'COLCON': '1'}, 'shell': False}
+[1.208765] (-) TimerEvent: {}
+[1.309012] (-) TimerEvent: {}
+[1.409229] (-) TimerEvent: {}
+[1.509414] (-) TimerEvent: {}
+[1.556569] (bot_brain) StdoutLine: {'line': b'running develop\n'}
+[1.609488] (-) TimerEvent: {}
+[1.709677] (-) TimerEvent: {}
+[1.795916] (bot_brain) StdoutLine: {'line': b'Removing /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot-brain.egg-link (link to .)\n'}
+[1.809763] (-) TimerEvent: {}
+[1.872228] (bot_brain) CommandEnded: {'returncode': 0}
+[1.873502] (bot_brain) Command: {'cmd': ['/home/gautam/.venvs/ros/bin/python3', '-W', 'ignore:setup.py install is deprecated', '-W', 'ignore:easy_install command is deprecated', 'setup.py', 'egg_info', '--egg-base', '../../build/bot_brain', 'build', '--build-base', '/home/gautam/z_bot/build/bot_brain/build', 'install', '--record', '/home/gautam/z_bot/build/bot_brain/install.log', '--single-version-externally-managed', 'install_data', '--force'], 'cwd': '/home/gautam/z_bot/src/bot_brain', 'env': {'USER': 'gautam', 'SSH_CLIENT': '172.20.10.3 46352 22', 'TEXTDOMAIN': 'pam_chksshpwd', 'XDG_SESSION_TYPE': 'tty', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/lib/aarch64-linux-gnu:/opt/ros/jazzy/lib', 'MOTD_SHOWN': 'pam', 'HOME': '/home/gautam', 'OLDPWD': '/home/gautam', 'SSH_TTY': '/dev/pts/1', 'ROS_PYTHON_VERSION': '3', 'PS1': '(ros) \\[\\e]0;\\u@\\h: \\w\\a\\]${debian_chroot:+($debian_chroot)}\\u@\\h:\\w\\$', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLCON_PREFIX_PATH': '/home/gautam/ros2_bot/install', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'gautam', '_': '/home/gautam/.venvs/ros/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'TERM': 'xterm-kitty', 'XDG_SESSION_ID': '5', 'PATH': '/home/gautam/.venvs/ros/bin:/home/gautam/.local/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games', 'XDG_RUNTIME_DIR': '/run/user/1000', 'LANG': 'en_GB.UTF-8', 'VIRTUAL_ENV_PROMPT': 'ros', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.7z=01;31:*.ace=01;31:*.alz=01;31:*.apk=01;31:*.arc=01;31:*.arj=01;31:*.bz=01;31:*.bz2=01;31:*.cab=01;31:*.cpio=01;31:*.crate=01;31:*.deb=01;31:*.drpm=01;31:*.dwm=01;31:*.dz=01;31:*.ear=01;31:*.egg=01;31:*.esd=01;31:*.gz=01;31:*.jar=01;31:*.lha=01;31:*.lrz=01;31:*.lz=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.lzo=01;31:*.pyz=01;31:*.rar=01;31:*.rpm=01;31:*.rz=01;31:*.sar=01;31:*.swm=01;31:*.t7z=01;31:*.tar=01;31:*.taz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tgz=01;31:*.tlz=01;31:*.txz=01;31:*.tz=01;31:*.tzo=01;31:*.tzst=01;31:*.udeb=01;31:*.war=01;31:*.whl=01;31:*.wim=01;31:*.xz=01;31:*.z=01;31:*.zip=01;31:*.zoo=01;31:*.zst=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.jxl=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'AMENT_PREFIX_PATH': '/home/gautam/ros2_bot/install/yolo_pi_detector:/opt/ros/jazzy', 'SHELL': '/bin/bash', 'NO_AT_BRIDGE': '1', 'VIRTUAL_ENV': '/home/gautam/.venvs/ros', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'PWD': '/home/gautam/z_bot/build/bot_brain', 'LC_ALL': 'en_US.UTF-8', 'SSH_CONNECTION': '172.20.10.3 46352 172.20.10.5 22', 'PYTHONPATH': '/home/gautam/z_bot/build/bot_brain/prefix_override:/home/gautam/.venvs/ros/lib/python3.13/site-packages/colcon_core/task/python/colcon_distutils_commands:/home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages:/home/gautam/ros2_bot/build/yolo_pi_detector:/home/gautam/ros2_bot/install/yolo_pi_detector/lib/python3.13/site-packages:/opt/ros/jazzy/lib/python3.13/site-packages', 'COLCON': '1'}, 'shell': False}
+[1.909844] (-) TimerEvent: {}
+[2.010085] (-) TimerEvent: {}
+[2.110284] (-) TimerEvent: {}
+[2.210459] (-) TimerEvent: {}
+[2.228042] (bot_brain) StdoutLine: {'line': b'running egg_info\n'}
+[2.253534] (bot_brain) StdoutLine: {'line': b'writing ../../build/bot_brain/bot_brain.egg-info/PKG-INFO\n'}
+[2.254307] (bot_brain) StdoutLine: {'line': b'writing dependency_links to ../../build/bot_brain/bot_brain.egg-info/dependency_links.txt\n'}
+[2.255430] (bot_brain) StdoutLine: {'line': b'writing entry points to ../../build/bot_brain/bot_brain.egg-info/entry_points.txt\n'}
+[2.256228] (bot_brain) StdoutLine: {'line': b'writing requirements to ../../build/bot_brain/bot_brain.egg-info/requires.txt\n'}
+[2.256770] (bot_brain) StdoutLine: {'line': b'writing top-level names to ../../build/bot_brain/bot_brain.egg-info/top_level.txt\n'}
+[2.310527] (-) TimerEvent: {}
+[2.311192] (bot_brain) StdoutLine: {'line': b"reading manifest file '../../build/bot_brain/bot_brain.egg-info/SOURCES.txt'\n"}
+[2.313428] (bot_brain) StdoutLine: {'line': b"writing manifest file '../../build/bot_brain/bot_brain.egg-info/SOURCES.txt'\n"}
+[2.313606] (bot_brain) StdoutLine: {'line': b'running build\n'}
+[2.313699] (bot_brain) StdoutLine: {'line': b'running build_py\n'}
+[2.315814] (bot_brain) StdoutLine: {'line': b'copying bot_brain/__init__.py -> /home/gautam/z_bot/build/bot_brain/build/lib/bot_brain\n'}
+[2.316007] (bot_brain) StdoutLine: {'line': b'copying bot_brain/sound_test.py -> /home/gautam/z_bot/build/bot_brain/build/lib/bot_brain\n'}
+[2.316813] (bot_brain) StdoutLine: {'line': b'copying bot_brain/inputs/__init__.py -> /home/gautam/z_bot/build/bot_brain/build/lib/bot_brain/inputs\n'}
+[2.316963] (bot_brain) StdoutLine: {'line': b'copying bot_brain/inputs/cam_run.py -> /home/gautam/z_bot/build/bot_brain/build/lib/bot_brain/inputs\n'}
+[2.317395] (bot_brain) StdoutLine: {'line': b'copying bot_brain/inputs/ultra_run.py -> /home/gautam/z_bot/build/bot_brain/build/lib/bot_brain/inputs\n'}
+[2.317912] (bot_brain) StdoutLine: {'line': b'copying bot_brain/inputs/yolo_run.py -> /home/gautam/z_bot/build/bot_brain/build/lib/bot_brain/inputs\n'}
+[2.318494] (bot_brain) StdoutLine: {'line': b'copying bot_brain/inputs/imu_run.py -> /home/gautam/z_bot/build/bot_brain/build/lib/bot_brain/inputs\n'}
+[2.319219] (bot_brain) StdoutLine: {'line': b'copying bot_brain/outputs/__init__.py -> /home/gautam/z_bot/build/bot_brain/build/lib/bot_brain/outputs\n'}
+[2.319621] (bot_brain) StdoutLine: {'line': b'copying bot_brain/logic/params.py -> /home/gautam/z_bot/build/bot_brain/build/lib/bot_brain/logic\n'}
+[2.320034] (bot_brain) StdoutLine: {'line': b'copying bot_brain/logic/world_model.py -> /home/gautam/z_bot/build/bot_brain/build/lib/bot_brain/logic\n'}
+[2.320439] (bot_brain) StdoutLine: {'line': b'copying bot_brain/logic/__init__.py -> /home/gautam/z_bot/build/bot_brain/build/lib/bot_brain/logic\n'}
+[2.320575] (bot_brain) StdoutLine: {'line': b'copying bot_brain/logic/fsm.py -> /home/gautam/z_bot/build/bot_brain/build/lib/bot_brain/logic\n'}
+[2.320997] (bot_brain) StdoutLine: {'line': b'copying bot_brain/logic/command.py -> /home/gautam/z_bot/build/bot_brain/build/lib/bot_brain/logic\n'}
+[2.321404] (bot_brain) StdoutLine: {'line': b'copying bot_brain/logic/brain_run.py -> /home/gautam/z_bot/build/bot_brain/build/lib/bot_brain/logic\n'}
+[2.322275] (bot_brain) StdoutLine: {'line': b'running install\n'}
+[2.328430] (bot_brain) StdoutLine: {'line': b'running install_lib\n'}
+[2.354226] (bot_brain) StdoutLine: {'line': b'creating /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot_brain\n'}
+[2.354369] (bot_brain) StdoutLine: {'line': b'copying /home/gautam/z_bot/build/bot_brain/build/lib/bot_brain/__init__.py -> /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot_brain\n'}
+[2.354524] (bot_brain) StdoutLine: {'line': b'creating /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot_brain/inputs\n'}
+[2.354620] (bot_brain) StdoutLine: {'line': b'copying /home/gautam/z_bot/build/bot_brain/build/lib/bot_brain/inputs/__init__.py -> /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot_brain/inputs\n'}
+[2.354724] (bot_brain) StdoutLine: {'line': b'copying /home/gautam/z_bot/build/bot_brain/build/lib/bot_brain/inputs/cam_run.py -> /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot_brain/inputs\n'}
+[2.354848] (bot_brain) StdoutLine: {'line': b'copying /home/gautam/z_bot/build/bot_brain/build/lib/bot_brain/inputs/ultra_run.py -> /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot_brain/inputs\n'}
+[2.354959] (bot_brain) StdoutLine: {'line': b'copying /home/gautam/z_bot/build/bot_brain/build/lib/bot_brain/inputs/yolo_run.py -> /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot_brain/inputs\n'}
+[2.355070] (bot_brain) StdoutLine: {'line': b'copying /home/gautam/z_bot/build/bot_brain/build/lib/bot_brain/inputs/imu_run.py -> /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot_brain/inputs\n'}
+[2.355214] (bot_brain) StdoutLine: {'line': b'creating /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot_brain/outputs\n'}
+[2.355302] (bot_brain) StdoutLine: {'line': b'copying /home/gautam/z_bot/build/bot_brain/build/lib/bot_brain/outputs/__init__.py -> /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot_brain/outputs\n'}
+[2.355403] (bot_brain) StdoutLine: {'line': b'copying /home/gautam/z_bot/build/bot_brain/build/lib/bot_brain/sound_test.py -> /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot_brain\n'}
+[2.355557] (bot_brain) StdoutLine: {'line': b'creating /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot_brain/logic\n'}
+[2.355643] (bot_brain) StdoutLine: {'line': b'copying /home/gautam/z_bot/build/bot_brain/build/lib/bot_brain/logic/params.py -> /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot_brain/logic\n'}
+[2.355755] (bot_brain) StdoutLine: {'line': b'copying /home/gautam/z_bot/build/bot_brain/build/lib/bot_brain/logic/world_model.py -> /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot_brain/logic\n'}
+[2.355865] (bot_brain) StdoutLine: {'line': b'copying /home/gautam/z_bot/build/bot_brain/build/lib/bot_brain/logic/__init__.py -> /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot_brain/logic\n'}
+[2.355955] (bot_brain) StdoutLine: {'line': b'copying /home/gautam/z_bot/build/bot_brain/build/lib/bot_brain/logic/fsm.py -> /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot_brain/logic\n'}
+[2.356072] (bot_brain) StdoutLine: {'line': b'copying /home/gautam/z_bot/build/bot_brain/build/lib/bot_brain/logic/command.py -> /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot_brain/logic\n'}
+[2.356176] (bot_brain) StdoutLine: {'line': b'copying /home/gautam/z_bot/build/bot_brain/build/lib/bot_brain/logic/brain_run.py -> /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot_brain/logic\n'}
+[2.356866] (bot_brain) StdoutLine: {'line': b'byte-compiling /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot_brain/__init__.py to __init__.cpython-313.pyc\n'}
+[2.357137] (bot_brain) StdoutLine: {'line': b'byte-compiling /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot_brain/inputs/__init__.py to __init__.cpython-313.pyc\n'}
+[2.357344] (bot_brain) StdoutLine: {'line': b'byte-compiling /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot_brain/inputs/cam_run.py to cam_run.cpython-313.pyc\n'}
+[2.358584] (bot_brain) StdoutLine: {'line': b'byte-compiling /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot_brain/inputs/ultra_run.py to ultra_run.cpython-313.pyc\n'}
+[2.359875] (bot_brain) StdoutLine: {'line': b'byte-compiling /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot_brain/inputs/yolo_run.py to yolo_run.cpython-313.pyc\n'}
+[2.363210] (bot_brain) StdoutLine: {'line': b'byte-compiling /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot_brain/inputs/imu_run.py to imu_run.cpython-313.pyc\n'}
+[2.364269] (bot_brain) StdoutLine: {'line': b'byte-compiling /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot_brain/outputs/__init__.py to __init__.cpython-313.pyc\n'}
+[2.364542] (bot_brain) StdoutLine: {'line': b'byte-compiling /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot_brain/sound_test.py to sound_test.cpython-313.pyc\n'}
+[2.364820] (bot_brain) StdoutLine: {'line': b'byte-compiling /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot_brain/logic/params.py to params.cpython-313.pyc\n'}
+[2.365110] (bot_brain) StdoutLine: {'line': b'byte-compiling /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot_brain/logic/world_model.py to world_model.cpython-313.pyc\n'}
+[2.365426] (bot_brain) StdoutLine: {'line': b'byte-compiling /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot_brain/logic/__init__.py to __init__.cpython-313.pyc\n'}
+[2.365596] (bot_brain) StdoutLine: {'line': b'byte-compiling /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot_brain/logic/fsm.py to fsm.cpython-313.pyc\n'}
+[2.366920] (bot_brain) StdoutLine: {'line': b'byte-compiling /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot_brain/logic/command.py to command.cpython-313.pyc\n'}
+[2.367162] (bot_brain) StdoutLine: {'line': b'byte-compiling /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot_brain/logic/brain_run.py to brain_run.cpython-313.pyc\n'}
+[2.368161] (bot_brain) StdoutLine: {'line': b'running install_data\n'}
+[2.369088] (bot_brain) StdoutLine: {'line': b'copying resource/bot_brain -> /home/gautam/z_bot/install/bot_brain/share/ament_index/resource_index/packages\n'}
+[2.369500] (bot_brain) StdoutLine: {'line': b'copying package.xml -> /home/gautam/z_bot/install/bot_brain/share/bot_brain\n'}
+[2.369629] (bot_brain) StdoutLine: {'line': b'running install_egg_info\n'}
+[2.395679] (bot_brain) StdoutLine: {'line': b'Copying ../../build/bot_brain/bot_brain.egg-info to /home/gautam/z_bot/install/bot_brain/lib/python3.13/site-packages/bot_brain-0.0.0-py3.13.egg-info\n'}
+[2.396901] (bot_brain) StdoutLine: {'line': b'running install_scripts\n'}
+[2.410589] (-) TimerEvent: {}
+[2.510762] (-) TimerEvent: {}
+[2.534797] (bot_brain) StdoutLine: {'line': b'Installing brain script to /home/gautam/z_bot/install/bot_brain/lib/bot_brain\n'}
+[2.535059] (bot_brain) StdoutLine: {'line': b'Installing camera script to /home/gautam/z_bot/install/bot_brain/lib/bot_brain\n'}
+[2.536600] (bot_brain) StdoutLine: {'line': b'Installing imu script to /home/gautam/z_bot/install/bot_brain/lib/bot_brain\n'}
+[2.537764] (bot_brain) StdoutLine: {'line': b'Installing ultrasonic script to /home/gautam/z_bot/install/bot_brain/lib/bot_brain\n'}
+[2.538940] (bot_brain) StdoutLine: {'line': b'Installing yolo script to /home/gautam/z_bot/install/bot_brain/lib/bot_brain\n'}
+[2.540567] (bot_brain) StdoutLine: {'line': b"writing list of installed files to '/home/gautam/z_bot/build/bot_brain/install.log'\n"}
+[2.606225] (bot_brain) CommandEnded: {'returncode': 0}
+[2.610827] (-) TimerEvent: {}
+[2.637388] (bot_brain) JobEnded: {'identifier': 'bot_brain', 'rc': 0}
+[2.641120] (-) EventReactorShutdown: {}
