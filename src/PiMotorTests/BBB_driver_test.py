@@ -3,8 +3,8 @@ from time import sleep
 
 # Raspberry Pi uses GPIO numbering (BCM), not physical pin numbers
 # GPIO 5 and GPIO 10 correspond to specific pins on the header
-motor_pin_1 = 17
-motor_pin_2 = 22
+motor_pin_1 = 19 # yellow 18
+motor_pin_2 = 18 # white 19
 
 # In gpiozero, Servo uses a range of -1 to 1. 
 # 0 corresponds to the 'middle' or 1500 microseconds.
@@ -26,8 +26,8 @@ def loop():
         # Example: To move motors like servo1.writeMicroseconds(2000)
         # Use motor_turn.value = 1.0
         # To move like servo1.writeMicroseconds(1000)
-        motor_turn.value = 0
-        motor_move.value = 1.0
+        motor_turn.value = 1.0
+        motor_move.value = 0.0
         
         # Keep the script running
         sleep(1)

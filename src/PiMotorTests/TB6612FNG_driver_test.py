@@ -10,11 +10,21 @@ ain2 = DigitalOutputDevice(27)
 # Standby pin (Must be HIGH for the driver to work)
 stby = DigitalOutputDevice(22)
 
+# PWM pin for speed control (0.0 to 1.0)
+pwm_b = PWMOutputDevice(13) 
+# Direction control pins
+bin1 = DigitalOutputDevice(23)
+bin2 = DigitalOutputDevice(24)
+
+
 def motor_forward(speed):
     stby.on()
     ain1.on()
     ain2.off()
     pwm_a.value = speed
+    bin1.on()
+    bin2.off()
+    pwm_b.value = speed
     print(f"Moving Forward at {speed*100}% speed")
 
 def motor_backward(speed):
@@ -22,10 +32,14 @@ def motor_backward(speed):
     ain1.off()
     ain2.on()
     pwm_a.value = speed
+    bin1.off()
+    bin2.on()
+    pwm_b.value = speed
     print(f"Moving Backward at {speed*100}% speed")
 
 def motor_stop():
     pwm_a.value = 0
+    pwm_b.value = 0
     stby.off()
     print("Motor Stopped")
 
