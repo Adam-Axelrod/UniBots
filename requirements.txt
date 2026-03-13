@@ -1,5 +1,6 @@
 opencv-python
 numpy
+pupil-apriltags
 ncnn
 pyyaml
 torch

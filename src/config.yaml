@@ -35,10 +35,15 @@ use_imu: false
 model_path: "model/yolopt_model/last.pt"
 conf_threshold: 0.5
 
+# --- Homing ---
+# Home zone: where the bot is initially placed. Set before each match based on arena assignment.
+home_zone: "North" # North | South | East | West
+
 # --- Actuators (motor, speaker) ---
 actuator_mode: "sim" # "sim" or "real"
 
 # --- Output / Debug (frame sink) ---
+debug_start_state: "GO_TO_HOME"  # optional: start FSM in this state for testing (e.g. GO_TO_HOME, SEARCH_BALL)
 headless: true # true = TCP stream to viewer, false = local window
 stream_viewer_port: 6001
 stream_send_every_n_frames: 2

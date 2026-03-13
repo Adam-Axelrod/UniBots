@@ -62,6 +62,15 @@ class Config:
     # Actuators (motor, speaker)
     ACTUATOR_MODE: str = "sim"  # "sim" or "real"; used by actuator creators
 
+    # Homing (zone = initial bot placement; maps to AprilTag IDs and wall color)
+    HOME_ZONE: str = "North"  # North | South | East | West
+    # AprilTag: if both > 0, detection runs on this resolution (from raw frame) for better distant-tag detection
+    APRIL_FRAME_WIDTH: int = 0
+    APRIL_FRAME_HEIGHT: int = 0
+
+    # Debug: optional FSM start state for testing (e.g. "GO_TO_HOME"); None = normal start (INIT)
+    DEBUG_START_STATE: str | None = None
+
     # Output / Debug (frame sink)
     HEADLESS: bool = True
     STREAM_VIEWER_PORT: int = 6001
@@ -109,6 +118,10 @@ def load_config(path: str | None = None) -> Config:
         MODEL_PATH=raw.get("model_path", "model/yolo11n_ncnn_model"),
         CONF_THRESHOLD=raw.get("conf_threshold", 0.5),
         ACTUATOR_MODE=raw.get("actuator_mode", "sim"),
+        HOME_ZONE=raw.get("home_zone", "North"),
+        APRIL_FRAME_WIDTH=raw.get("april_frame_width", 0),
+        APRIL_FRAME_HEIGHT=raw.get("april_frame_height", 0),
+        DEBUG_START_STATE=raw.get("debug_start_state") or None,
         HEADLESS=raw.get("headless", True),
         STREAM_VIEWER_PORT=raw.get("stream_viewer_port", 6001),
         STREAM_SEND_EVERY_N_FRAMES=raw.get("stream_send_every_n_frames", 2),
