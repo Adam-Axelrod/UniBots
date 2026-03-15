@@ -25,7 +25,7 @@ setup(
     entry_points={
         'console_scripts': [
         'brain = bot_brain.logic.brain_run:main',
-        'ultrasonic = bot_brain.inputs.ultra_run:main',
+        'tof = bot_brain.inputs.tof_run:main',
         'camera = bot_brain.inputs.cam_run:main',
         'yolo = bot_brain.inputs.yolo_run:main',
         'imu = bot_brain.inputs.imu_run:main',

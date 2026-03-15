@@ -1,4 +1,5 @@
 smbus2
+adafruit-circuitpython-vl53l0x
 opencv-python
 numpy
 pupil-apriltags
