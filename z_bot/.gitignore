@@ -1,0 +1,44 @@
+# Colcon / ROS 2 build artifacts
+build/
+install/
+log/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+*.egg
+dist/
+.eggs/
+.venv/
+venv/
+env/
+*.manifest
+
+# ML / YOLO model weights (large binaries)
+*.pt
+*.pth
+*.onnx
+*.weights
+
+# IDE / Editor
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temp / misc
+*.tmp
+.*.tmp
+.lgd-*
+
+# Cursor
+.cursor/

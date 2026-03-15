@@ -1,0 +1,115 @@
+from gpiozero import PWMOutputDevice, DigitalOutputDevice
+from time import sleep
+
+# --- Pin Setup ---
+# Motor A
+pwm_a = PWMOutputDevice(12)
+ain1 = DigitalOutputDevice(17)
+ain2 = DigitalOutputDevice(27)
+
+# Motor B
+pwm_b = PWMOutputDevice(13)
+bin1 = DigitalOutputDevice(23)
+bin2 = DigitalOutputDevice(24)
+
+# Standby pin
+stby = DigitalOutputDevice(22)
+
+
+def motor_forward(speed):
+    stby.on()
+
+    ain1.on()
+    ain2.off()
+    pwm_a.value = speed
+
+    bin1.on()
+    bin2.off()
+    pwm_b.value = speed
+
+    print(f"Moving Forward at {speed*100}% speed")
+
+
+def motor_backward(speed):
+    stby.on()
+
+    ain1.off()
+    ain2.on()
+    pwm_a.value = speed
+
+    bin1.off()
+    bin2.on()
+    pwm_b.value = speed
+
+    print(f"Moving Backward at {speed*100}% speed")
+
+
+def motor_right(speed):
+    stby.on()
+
+    # Left motor forward
+    ain1.on()
+    ain2.off()
+    pwm_a.value = speed
+
+    # Right motor backward
+    bin1.off()
+    bin2.on()
+    pwm_b.value = speed
+
+    print(f"Turning Right at {speed*100}% speed")
+
+
+def motor_left(speed):
+    stby.on()
+
+    # Left motor backward
+    ain1.off()
+    ain2.on()
+    pwm_a.value = speed
+
+    # Right motor forward
+    bin1.on()
+    bin2.off()
+    pwm_b.value = speed
+
+    print(f"Turning Left at {speed*100}% speed")
+
+
+def motor_stop():
+    pwm_a.value = 0
+    pwm_b.value = 0
+    stby.off()
+    print("Motor Stopped")
+
+
+try:
+    while True:
+        motor_forward(1.0)
+        sleep(2)
+
+        motor_stop()
+        sleep(1)
+
+        motor_backward(0.6)
+        sleep(2)
+
+        motor_stop()
+        sleep(1)
+
+        motor_right(1.0)
+        sleep(2)
+
+        motor_stop()
+        sleep(1)
+
+        motor_left(1.0)
+        sleep(2)
+
+        motor_stop()
+        sleep(1)
+
+
+except KeyboardInterrupt:
+    motor_stop()
+    print("Script ended by user")
