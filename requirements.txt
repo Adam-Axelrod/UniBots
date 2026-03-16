@@ -1,5 +1,8 @@
+smbus2
 opencv-python
 numpy
+pupil-apriltags
+ncnn
 pyyaml
 torch
 ultralytics

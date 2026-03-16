@@ -1,103 +1,135 @@
 """
-FSM skeleton based on Design.md.
-
-States and transitions mirror the spec. Handlers are stubbed for later implementation.
+FSM: receives WorldModel, produces (State, Command).
 """
 
-from dataclasses import dataclass
 from enum import Enum, auto
+
+from brain.command import Command, MotorDirection
+from brain.world_model import WorldModel
 
 
 class State(Enum):
     INIT = auto()
     SEARCH_BALL = auto()
     DRIVE_TO_BALL = auto()
-    GO_TO_WALL = auto()
+    GO_TO_HOME = auto()
     ALIGN_AND_DROP = auto()
     PARK = auto()
     AVOID_OBSTACLE = auto()
 
 
-@dataclass
-class Sensors:
-    """Stub sensor bundle; real implementation will populate these fields."""
-
-    start_signal: bool = False
-    ball_detected: bool = False
-    ball_collected: bool = False
-    ball_lost: bool = False
-    balls_full: bool = False
-    time_low: bool = False
-    wall_visible: bool = False
-    obstacle: bool = False
-    obstacle_cleared: bool = False
-
-
 class FSM:
-    """Finite-state machine skeleton (no hardware calls)."""
+    """Finite-state machine. update(WorldModel) -> (State, Command)."""
 
     def __init__(self):
         self.state = State.INIT
         self._prev_state: State | None = None
 
-    def update(self, sensors: Sensors) -> State:
-        # Interrupt-style obstacle handling
-        if sensors.obstacle and self.state != State.AVOID_OBSTACLE:
+    def update(self, wm: WorldModel) -> tuple[State, Command]:
+        cmd = Command()
+
+        # Interrupt-style obstacle handling (disabled in PARK terminal state)
+        if wm.obstacle and self.state != State.AVOID_OBSTACLE and self.state != State.PARK:
             self._prev_state = self.state
             self.state = State.AVOID_OBSTACLE
 
         if self.state == State.INIT:
-            self._init(sensors)
+            cmd = self._init(wm)
         elif self.state == State.SEARCH_BALL:
-            self._search_ball(sensors)
+            cmd = self._search_ball(wm)
         elif self.state == State.DRIVE_TO_BALL:
-            self._drive_to_ball(sensors)
-        elif self.state == State.GO_TO_WALL:
-            self._go_to_wall(sensors)
+            cmd = self._drive_to_ball(wm)
+        elif self.state == State.GO_TO_HOME:
+            cmd = self._go_to_home(wm)
         elif self.state == State.ALIGN_AND_DROP:
-            self._align_and_drop(sensors)
+            cmd = self._align_and_drop(wm)
         elif self.state == State.PARK:
-            self._park(sensors)
+            cmd = self._park(wm)
         elif self.state == State.AVOID_OBSTACLE:
-            self._avoid_obstacle(sensors)
+            cmd = self._avoid_obstacle(wm)
 
-        return self.state
+        return self.state, cmd
 
-    # ---- State handlers (stubs) ----
-
-    def _init(self, sensors: Sensors) -> None:
-        # TODO: wait for start; reset counters/timers; enable intake
-        if sensors.start_signal:
+    def _init(self, wm: WorldModel) -> Command:
+        if wm.start_signal:
             self.state = State.SEARCH_BALL
+        return Command()
 
-    def _search_ball(self, sensors: Sensors) -> None:
-        # TODO: wander/sweep arena
-        if sensors.ball_detected:
+    def _search_ball(self, wm: WorldModel) -> Command:
+        if wm.ball_detected:
             self.state = State.DRIVE_TO_BALL
-        elif sensors.balls_full or sensors.time_low:
-            self.state = State.GO_TO_WALL
+        elif wm.time_low:
+            self.state = State.GO_TO_HOME
+        # Wander: slow rotation
+        return Command(motor=MotorDirection.LEFT)
 
-    def _drive_to_ball(self, sensors: Sensors) -> None:
-        # TODO: face ball, drive forward, maintain heading
-        if sensors.ball_collected or sensors.ball_lost:
+    def _drive_to_ball(self, wm: WorldModel) -> Command:
+        if wm.ball_lost:
             self.state = State.SEARCH_BALL
-        elif sensors.balls_full:
-            self.state = State.GO_TO_WALL
+        elif wm.time_low:
+            self.state = State.GO_TO_HOME
+        elif not wm.target_ball:
+            # No ball in view (e.g. returned from AVOID after losing sight)
+            self.state = State.SEARCH_BALL
+        # Drive toward target_ball
+        if wm.target_ball:
+            return Command(motor=MotorDirection.FORWARD)
+        return Command()
 
-    def _go_to_wall(self, sensors: Sensors) -> None:
-        # TODO: orient to wall, drive forward, avoid obstacles
-        if sensors.wall_visible:
+    def _go_to_home(self, wm: WorldModel) -> Command:
+        # Only transition when at center of home wall AND facing the wall (tag centered)
+        if wm.at_home_center and wm.home_tag_centered:
             self.state = State.ALIGN_AND_DROP
+            return Command()
+        # At center but not facing wall: turn to center the tag (face dead on)
+        if wm.at_home_center and wm.home_tag_visible and not wm.home_tag_centered:
+            return Command(
+                motor=MotorDirection.LEFT
+                if wm.home_tag_left_of_center
+                else MotorDirection.RIGHT
+            )
+        # At home but not at center: move along wall toward center (turn to slide, then forward)
+        if wm.at_home and not wm.at_home_center:
+            lo, hi = wm.home_center_tag_lo, wm.home_center_tag_hi
+            if (
+                wm.home_tag_id is not None
+                and lo is not None
+                and hi is not None
+            ):
+                if wm.home_tag_id < lo:
+                    return Command(motor=MotorDirection.RIGHT)
+                if wm.home_tag_id > hi:
+                    return Command(motor=MotorDirection.LEFT)
+        if wm.home_tag_visible:
+            if not wm.home_tag_centered:
+                return Command(
+                    motor=MotorDirection.LEFT
+                    if wm.home_tag_left_of_center
+                    else MotorDirection.RIGHT
+                )
+            return Command(motor=MotorDirection.FORWARD)
+        # No home tag visible: rotate to search
+        return Command(motor=MotorDirection.LEFT)
 
-    def _align_and_drop(self, sensors: Sensors) -> None:
-        # TODO: align parallel, drop balls
+    def _align_and_drop(self, wm: WorldModel) -> Command:
+        if wm.home_tag_align_centered:
+            self.state = State.PARK
+            return Command(drop=True)
+        # Micro-adjust to center tag before drop
+        if wm.home_tag_visible and not wm.home_tag_align_centered:
+            return Command(
+                motor=MotorDirection.LEFT
+                if wm.home_tag_left_of_center
+                else MotorDirection.RIGHT
+            )
+        # No tag visible; drop anyway (fallback)
         self.state = State.PARK
+        return Command(drop=True)
 
-    def _park(self, sensors: Sensors) -> None:
-        # TODO: drive slowly until touching wall, stop forever
-        pass
+    def _park(self, wm: WorldModel) -> Command:
+        return Command(motor=MotorDirection.STOP)
 
-    def _avoid_obstacle(self, sensors: Sensors) -> None:
-        # TODO: local turn + short move, resume prev state
-        if sensors.obstacle_cleared:
+    def _avoid_obstacle(self, wm: WorldModel) -> Command:
+        if wm.obstacle_cleared:
             self.state = self._prev_state or State.SEARCH_BALL
+        return Command(motor=MotorDirection.LEFT)

@@ -13,16 +13,13 @@ class LocalDisplaySink(FrameSink):
 
     def __init__(self, window_name: str):
         self._window_name = window_name
-        self._resized = False
 
     def start(self) -> None:
         cv2.namedWindow(self._window_name, cv2.WINDOW_NORMAL)
 
     def send(self, frame: np.ndarray) -> bool:
         h, w = frame.shape[:2]
-        if not self._resized:
-            cv2.resizeWindow(self._window_name, w, h)
-            self._resized = True
+        cv2.resizeWindow(self._window_name, w, h)
         cv2.imshow(self._window_name, frame)
         return (cv2.waitKey(1) & 0xFF) == ord("q")
 
