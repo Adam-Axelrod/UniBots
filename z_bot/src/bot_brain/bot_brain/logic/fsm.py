@@ -37,13 +37,23 @@ class BrainFSM:
         self.search_rotation_accumulated: float = 0.0
         self.search_forward_start_s: Optional[float] = None
 
+        # Chunked turn: rotate N deg, pause, repeat
+        self.search_turn_subphase: str = 'rotate'  # 'rotate' | 'pause'
+        self.search_chunk_start_heading: Optional[float] = None
+        self.search_chunk_accumulated: float = 0.0
+        self.search_pause_end_s: Optional[float] = None
+
     def _reset_search_phase(self) -> None:
-        print(f"reset search phase")
+        print("reset search phase")
         self.search_phase = 'turn'
         self.search_turn_start_heading = None
         self.search_last_heading = None
         self.search_rotation_accumulated = 0.0
         self.search_forward_start_s = None
+        self.search_turn_subphase = 'rotate'
+        self.search_chunk_start_heading = None
+        self.search_chunk_accumulated = 0.0
+        self.search_pause_end_s = None
 
     def update(self, wm: WorldModel) -> Tuple[State, Command]:
 
@@ -76,20 +86,41 @@ class BrainFSM:
                     self.search_turn_start_heading = wm.heading_deg
                     self.search_last_heading = wm.heading_deg
                     self.search_rotation_accumulated = 0.0
+                    self.search_chunk_start_heading = wm.heading_deg
+                    self.search_chunk_accumulated = 0.0
 
+                # Pause subphase: stop for YOLO detection window
+                if self.search_turn_subphase == 'pause':
+                    if wm.now_s >= (self.search_pause_end_s or 0):
+                        if self.search_rotation_accumulated >= params.SEARCH_TURN_ANGLE_DEG:
+                            self._reset_search_phase()
+                            self.search_phase = 'forward'
+                            self.search_forward_start_s = wm.now_s
+                            return self.state, Command(0.0, 0.0)
+                        self.search_turn_subphase = 'rotate'
+                        self.search_chunk_start_heading = wm.heading_deg
+                        self.search_chunk_accumulated = 0.0
+                    return self.state, Command(0.0, 0.0)
+
+                # Rotate subphase: turn until chunk complete
                 if wm.heading_deg is not None and self.search_last_heading is not None:
                     delta = (wm.heading_deg - self.search_last_heading + 180) % 360 - 180
                     self.search_rotation_accumulated += abs(delta)
+                    self.search_chunk_accumulated += abs(delta)
                     self.search_last_heading = wm.heading_deg
 
-                    if abs(self.search_rotation_accumulated) >= params.SEARCH_TURN_ANGLE_DEG:
+                    if self.search_chunk_accumulated >= params.SEARCH_TURN_CHUNK_DEG:
+                        self.search_turn_subphase = 'pause'
+                        self.search_pause_end_s = wm.now_s + params.SEARCH_TURN_PAUSE_S
+                        return self.state, Command(0.0, 0.0)
+
+                    if self.search_rotation_accumulated >= params.SEARCH_TURN_ANGLE_DEG:
                         self._reset_search_phase()
                         self.search_phase = 'forward'
                         self.search_forward_start_s = wm.now_s
                         return self.state, Command(0.0, 0.0)
 
-                # Keep turning left (fallback: timed turn if no IMU)
-                return self.state, Command(0.0, 0.3)
+                return self.state, Command(0.0, params.SEARCH_TURN_SPEED)
 
             # search_phase == 'forward'
             if self.search_forward_start_s is None:
