@@ -6,11 +6,19 @@ from .world_model import WorldModel
 from .command import Command
 from . import params
 
+STOP = Command(0.0, 0.0)
+
+
+def _normalize_angle_diff(deg_a: float, deg_b: float) -> float:
+    """Normalize angle difference to [-180, 180] degrees."""
+    return (deg_a - deg_b + 180) % 360 - 180
+
 
 def _obstacle_detected(range_cm: Optional[float]) -> bool:
+    """Returns True when obstacle is closer than AVOID_DISTANCE_CM."""
     if range_cm is None or math.isnan(range_cm):
         return False
-    return range_cm < 6   # 60 mm = 6 cm
+    return range_cm < params.AVOID_DISTANCE_CM
 
 
 class State(Enum):
@@ -18,6 +26,16 @@ class State(Enum):
     ALIGN = auto()
     DRIVE = auto()
     AVOID = auto()
+
+
+class SearchPhase(Enum):
+    TURN = auto()
+    FORWARD = auto()
+
+
+class SearchTurnSubphase(Enum):
+    ROTATE = auto()
+    PAUSE = auto()
 
 
 class BrainFSM:
@@ -31,178 +49,155 @@ class BrainFSM:
         self.turn_start_heading: Optional[float] = None
 
         # SEARCH phase tracking
-        self.search_phase: str = 'turn'  # 'turn' | 'forward'
+        self.search_phase: SearchPhase = SearchPhase.TURN
         self.search_turn_start_heading: Optional[float] = None
         self.search_last_heading: Optional[float] = None
         self.search_rotation_accumulated: float = 0.0
         self.search_forward_start_s: Optional[float] = None
 
         # Chunked turn: rotate N deg, pause, repeat
-        self.search_turn_subphase: str = 'rotate'  # 'rotate' | 'pause'
+        self.search_turn_subphase: SearchTurnSubphase = SearchTurnSubphase.ROTATE
         self.search_chunk_start_heading: Optional[float] = None
         self.search_chunk_accumulated: float = 0.0
         self.search_pause_end_s: Optional[float] = None
 
     def _reset_search_phase(self) -> None:
-        print("reset search phase")
-        self.search_phase = 'turn'
+        self.search_phase = SearchPhase.TURN
         self.search_turn_start_heading = None
         self.search_last_heading = None
         self.search_rotation_accumulated = 0.0
         self.search_forward_start_s = None
-        self.search_turn_subphase = 'rotate'
+        self.search_turn_subphase = SearchTurnSubphase.ROTATE
         self.search_chunk_start_heading = None
         self.search_chunk_accumulated = 0.0
         self.search_pause_end_s = None
 
     def update(self, wm: WorldModel) -> Tuple[State, Command]:
-
-        # 🔴 Trigger AVOID ONLY from SEARCH
+        # Obstacle check: trigger AVOID from any state (except future PARK where it triggers stop)
         if _obstacle_detected(wm.range_cm):
             self.state = State.AVOID
             self.turning = False
-            return self.state, Command(0.0, 0.0)
+            return self.state, STOP
 
-        # Track last time ball seen
         if wm.cluster is not None:
             self.last_cluster_seen_s = wm.now_s
 
-        # =================================
-        # SEARCH
-        # =================================
-        if self.state == State.SEARCH:
+        handlers = {
+            State.SEARCH: self._update_search,
+            State.ALIGN: self._update_align,
+            State.DRIVE: self._update_drive,
+            State.AVOID: self._update_avoid,
+        }
+        return handlers.get(self.state, self._fallback)(wm)
 
-            # Cluster seen → ALIGN (from any phase)
-            if wm.cluster is not None:
-                self._reset_search_phase()
-                self.state = State.ALIGN
-                return self.state, Command(0.0, 0.0)
+    def _update_search(self, wm: WorldModel) -> Tuple[State, Command]:
+        # Cluster seen → ALIGN (from any phase)
+        if wm.cluster is not None:
+            self._reset_search_phase()
+            self.state = State.ALIGN
+            return self.state, STOP
 
-            print(f"search phase: {self.search_phase}, turn start heading: {self.search_turn_start_heading}, last heading: {self.search_last_heading}, rotation accumulated: {self.search_rotation_accumulated}")
+        if self.search_phase == SearchPhase.TURN:
+            # Start turn phase
+            if self.search_turn_start_heading is None and wm.heading_deg is not None:
+                self.search_turn_start_heading = wm.heading_deg
+                self.search_last_heading = wm.heading_deg
+                self.search_rotation_accumulated = 0.0
+                self.search_chunk_start_heading = wm.heading_deg
+                self.search_chunk_accumulated = 0.0
 
-            if self.search_phase == 'turn':
-                # Start turn phase
-                if self.search_turn_start_heading is None and wm.heading_deg is not None:
-                    self.search_turn_start_heading = wm.heading_deg
-                    self.search_last_heading = wm.heading_deg
-                    self.search_rotation_accumulated = 0.0
-                    self.search_chunk_start_heading = wm.heading_deg
-                    self.search_chunk_accumulated = 0.0
-
-                # Pause subphase: stop for YOLO detection window
-                if self.search_turn_subphase == 'pause':
-                    if wm.now_s >= (self.search_pause_end_s or 0):
-                        if self.search_rotation_accumulated >= params.SEARCH_TURN_ANGLE_DEG:
-                            self._reset_search_phase()
-                            self.search_phase = 'forward'
-                            self.search_forward_start_s = wm.now_s
-                            return self.state, Command(0.0, 0.0)
-                        self.search_turn_subphase = 'rotate'
-                        self.search_chunk_start_heading = wm.heading_deg
-                        self.search_chunk_accumulated = 0.0
-                    return self.state, Command(0.0, 0.0)
-
-                # Rotate subphase: turn until chunk complete
-                if wm.heading_deg is not None and self.search_last_heading is not None:
-                    delta = (wm.heading_deg - self.search_last_heading + 180) % 360 - 180
-                    self.search_rotation_accumulated += abs(delta)
-                    self.search_chunk_accumulated += abs(delta)
-                    self.search_last_heading = wm.heading_deg
-
-                    if self.search_chunk_accumulated >= params.SEARCH_TURN_CHUNK_DEG:
-                        self.search_turn_subphase = 'pause'
-                        self.search_pause_end_s = wm.now_s + params.SEARCH_TURN_PAUSE_S
-                        return self.state, Command(0.0, 0.0)
-
+            # Pause subphase: stop for YOLO detection window
+            if self.search_turn_subphase == SearchTurnSubphase.PAUSE:
+                if wm.now_s >= (self.search_pause_end_s or 0):
                     if self.search_rotation_accumulated >= params.SEARCH_TURN_ANGLE_DEG:
                         self._reset_search_phase()
-                        self.search_phase = 'forward'
+                        self.search_phase = SearchPhase.FORWARD
                         self.search_forward_start_s = wm.now_s
-                        return self.state, Command(0.0, 0.0)
+                        return self.state, STOP
+                    self.search_turn_subphase = SearchTurnSubphase.ROTATE
+                    self.search_chunk_start_heading = wm.heading_deg
+                    self.search_chunk_accumulated = 0.0
+                return self.state, STOP
 
-                return self.state, Command(0.0, params.SEARCH_TURN_SPEED)
+            # Rotate subphase: turn until chunk complete
+            if wm.heading_deg is not None and self.search_last_heading is not None:
+                delta = _normalize_angle_diff(wm.heading_deg, self.search_last_heading)
+                self.search_rotation_accumulated += abs(delta)
+                self.search_chunk_accumulated += abs(delta)
+                self.search_last_heading = wm.heading_deg
 
-            # search_phase == 'forward'
-            if self.search_forward_start_s is None:
-                self.search_forward_start_s = wm.now_s
+                if self.search_chunk_accumulated >= params.SEARCH_TURN_CHUNK_DEG:
+                    self.search_turn_subphase = SearchTurnSubphase.PAUSE
+                    self.search_pause_end_s = wm.now_s + params.SEARCH_TURN_PAUSE_S
+                    return self.state, STOP
 
-            if wm.now_s - self.search_forward_start_s >= params.SEARCH_DRIVE_S:
-                self._reset_search_phase()
-                return self.state, Command(0.0, 0.0)
+                if self.search_rotation_accumulated >= params.SEARCH_TURN_ANGLE_DEG:
+                    self._reset_search_phase()
+                    self.search_phase = SearchPhase.FORWARD
+                    self.search_forward_start_s = wm.now_s
+                    return self.state, STOP
 
-            return self.state, Command(0.2, 0.0)  # forward
+            return self.state, Command(0.0, params.SEARCH_TURN_SPEED)
 
-        # =================================
-        # AVOID (90° RIGHT TURN using IMU)
-        # =================================
-        if self.state == State.AVOID:
+        # search_phase == SearchPhase.FORWARD
+        if self.search_forward_start_s is None:
+            self.search_forward_start_s = wm.now_s
 
-            # Start turn once
-            if not self.turning:
-                self.turning = True
-                self.turn_start_heading = wm.heading_deg
+        if wm.now_s - self.search_forward_start_s >= params.SEARCH_DRIVE_S:
+            self._reset_search_phase()
+            return self.state, STOP
 
-            # If heading available
-            if wm.heading_deg is not None and self.turn_start_heading is not None:
+        return self.state, Command(params.SEARCH_FORWARD_SPEED, 0.0)
 
-                delta = wm.heading_deg - self.turn_start_heading
+    def _update_avoid(self, wm: WorldModel) -> Tuple[State, Command]:
+        # Start turn once
+        if not self.turning:
+            self.turning = True
+            self.turn_start_heading = wm.heading_deg
 
-                # Normalize to [-180, 180]
-                delta = (delta + 180) % 360 - 180
+        if wm.heading_deg is not None and self.turn_start_heading is not None:
+            delta = _normalize_angle_diff(wm.heading_deg, self.turn_start_heading)
+            if abs(delta) < 90:
+                return self.state, Command(0.0, -params.AVOID_TURN_SPEED)
 
-                # Keep turning RIGHT
-                if abs(delta) < 90:
-                    return self.state, Command(0.0, -0.4)
+            self.turning = False
+            self._reset_search_phase()
+            self.state = State.SEARCH
+            return self.state, STOP
 
-                # Done turning → go back to SEARCH
-                self.turning = False
-                self._reset_search_phase()
-                self.state = State.SEARCH
-                return self.state, Command(0.0, 0.0)
+        return self.state, Command(0.0, -params.AVOID_TURN_SPEED)
 
-            # fallback if no IMU
-            return self.state, Command(0.0, -0.4)
+    def _update_align(self, wm: WorldModel) -> Tuple[State, Command]:
+        if wm.cluster is None:
+            if self.last_cluster_seen_s is not None and wm.now_s - self.last_cluster_seen_s < params.ALIGN_LOST_GRACE_S:
+                return self.state, STOP
+            self._reset_search_phase()
+            self.state = State.SEARCH
+            return self.state, STOP
 
-        # =================================
-        # ALIGN
-        # =================================
-        align_speed = 2.0
-        if self.state == State.ALIGN:
+        side = wm.cluster.side
+        if abs(side) < params.SIDE_EPSILON:
+            self.state = State.DRIVE
+            return self.state, STOP
 
-            if wm.cluster is None:
-                self._reset_search_phase()
-                self.state = State.SEARCH
-                return self.state, Command(0.0, 0.0)
+        if side > 0:
+            return self.state, Command(0.0, params.ALIGN_SPEED)
+        return self.state, Command(0.0, -params.ALIGN_SPEED)
 
-            side = wm.cluster.side
+    def _update_drive(self, wm: WorldModel) -> Tuple[State, Command]:
+        if wm.cluster is None:
+            if self.last_cluster_seen_s is not None and wm.now_s - self.last_cluster_seen_s < params.DRIVE_LOST_GRACE_S:
+                return self.state, STOP
+            self._reset_search_phase()
+            self.state = State.SEARCH
+            return self.state, STOP
 
-            if side == 0.0:
-                self.state = State.DRIVE
-                return self.state, Command(0.0, 0.0)
+        if abs(wm.cluster.side) >= params.SIDE_EPSILON:
+            self.state = State.ALIGN
+            return self.state, STOP
 
-            if side > 0:
-                return self.state, Command(0.0, align_speed)
+        return self.state, Command(params.DRIVE_SPEED, 0.0)
 
-            if side < 0:
-                return self.state, Command(0.0, -align_speed)
-
-        # =================================
-        # DRIVE
-        # =================================
-        if self.state == State.DRIVE:
-            if wm.cluster is None:
-                self._reset_search_phase()
-                self.state = State.SEARCH
-                return self.state, Command(0.0, 0.0)
-            else:
-                if wm.cluster.side != 0.0:
-                    self.state = State.ALIGN
-                    return self.state, Command(0.0, 0.0)
-
-            return self.state, Command(0.8, 0.0)
-
-        # =================================
-        # FALLBACK
-        # =================================
+    def _fallback(self, wm: WorldModel) -> Tuple[State, Command]:
         self.state = State.SEARCH
-        return self.state, Command(0.0, 0.0)
+        return self.state, STOP

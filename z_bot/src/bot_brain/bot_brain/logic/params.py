@@ -7,38 +7,40 @@ RUN_TIME_S = 180.0  # 3 minutes
 # Avoidance (highest priority)
 # =========================
 AVOID_DISTANCE_CM = 25.0
+# TODO: future - hysteresis when re-entering after avoid
 AVOID_CLEAR_HYST_CM = 7.0
-
-# For now: avoidance action is "turn right"
+# TODO: future - turn left vs right option
 AVOID_TURN_RIGHT = True
-
-# When very close, backup before turning (cm). 0 = disabled.
+# TODO: future - backup before turning when very close
 AVOID_BACKUP_CM = 15.0
 AVOID_BACKUP_SPEED = 0.5
 
 # =========================
 # Align / Drive
 # =========================
-# Stop condition: cluster centroid goes near bottom of frame (ball pile under bot)
+# Threshold for "centered" (abs(side) < this = centered). Avoids float oscillation.
+SIDE_EPSILON = 0.01
+
+# TODO: future - stop when cluster centroid near bottom of frame
 # For 240px height, 210-235 is typical.
 DRIVE_STOP_CY_PX = 210.0
 
-# If cluster disappears shortly after being seen during DRIVE, treat as "collected"
+# TODO: future - if cluster disappears shortly after DRIVE, treat as "collected"
 DRIVE_LOST_AS_REACHED_TIMEOUT_S = 0.8
 
 # Grace period: if cluster lost briefly in DRIVE, wait before SEARCH (avoids drive/align/search oscillation)
-DRIVE_LOST_GRACE_S = 0.5
+DRIVE_LOST_GRACE_S = 0.5  # Used by FSM
 
-# After leaving DRIVE, stay in SEARCH for this long before allowing ALIGN (breaks drive/align/search oscillation)
+# TODO: future - after leaving DRIVE, stay in SEARCH before allowing ALIGN
 SEARCH_COOLDOWN_AFTER_DRIVE_S = 1.5
 
 # If no cluster while aligning, go to SEARCH (spin)
 SEARCH_WHEN_NO_CLUSTER = True
 
 # Grace period: if cluster lost briefly in ALIGN, wait before SEARCH (avoids flicker/overshoot)
-ALIGN_LOST_GRACE_S = 0.6
+ALIGN_LOST_GRACE_S = 0.6  # Used by FSM
 
-# Align turn rate (rad/s). Lower = less overshoot when centering.
+# TODO: future - align turn rate when wiring ALIGN_SPEED scaling
 ALIGN_TURN_RATE = 0.25
 
 # =========================
@@ -52,3 +54,13 @@ SEARCH_TURN_ANGLE_DEG = 360.0
 SEARCH_TURN_CHUNK_DEG = 15.0
 SEARCH_TURN_SPEED = 0.3
 SEARCH_TURN_PAUSE_S = 0.8
+SEARCH_FORWARD_SPEED = 0.2
+
+# Avoid turn angular speed (positive = right)
+AVOID_TURN_SPEED = 0.4
+
+# Drive forward speed when pursuing cluster
+DRIVE_SPEED = 0.8
+
+# Align angular speed when centering on cluster
+ALIGN_SPEED = 2.0
