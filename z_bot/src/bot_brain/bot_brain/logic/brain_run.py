@@ -24,6 +24,7 @@ class BrainNode(Node):
         self.declare_parameter('april_topic', '/apriltags/detections')
         self.declare_parameter('home_wall', 'North')
         self.declare_parameter('go_home_trigger_s', params.GO_HOME_TRIGGER_S)
+        self.declare_parameter('starting_state', params.STARTING_STATE)
 
         tick_hz = float(self.get_parameter('tick_hz').value)
         self.cluster_topic = str(self.get_parameter('cluster_topic').value)
@@ -32,6 +33,7 @@ class BrainNode(Node):
         self.april_topic = str(self.get_parameter('april_topic').value)
         self.home_wall = str(self.get_parameter('home_wall').value)
         self.go_home_trigger_s = float(self.get_parameter('go_home_trigger_s').value)
+        starting_state_str = str(self.get_parameter('starting_state').value).lower()
 
         # -------- Sensor Storage --------
         self.last_cluster_raw = None
@@ -76,7 +78,21 @@ class BrainNode(Node):
         )
 
         # -------- FSM --------
-        self.fsm = BrainFSM()
+        _state_map = {
+            'search': State.SEARCH,
+            'align': State.ALIGN,
+            'drive': State.DRIVE,
+            'avoid': State.AVOID,
+            'go_home': State.GO_HOME,
+        }
+        initial_state = _state_map.get(starting_state_str)
+        if initial_state is None:
+            self.get_logger().warn(
+                f"Invalid starting_state='{starting_state_str}', using SEARCH. "
+                f"Valid: search, align, drive, avoid, go_home"
+            )
+            initial_state = State.SEARCH
+        self.fsm = BrainFSM(initial_state=initial_state)
 
         # -------- Time --------
         self.start_s = self.get_clock().now().nanoseconds * 1e-9
@@ -87,7 +103,8 @@ class BrainNode(Node):
 
         self.get_logger().info(
             f"Brain node @ {tick_hz:.1f}Hz | sub: {self.cluster_topic}, {self.range_topic}, "
-            f"{self.heading_topic}, {self.april_topic} | home_wall={self.home_wall}"
+            f"{self.heading_topic}, {self.april_topic} | home_wall={self.home_wall} | "
+            f"starting_state={starting_state_str}"
         )
 
     # --------------------------------
@@ -116,7 +133,6 @@ class BrainNode(Node):
     # --------------------------------
 
     def _parse_cluster(self):
-
         if self.last_cluster_raw is None:
             return None
 
@@ -161,24 +177,15 @@ class BrainNode(Node):
             i += floats_per_tag
         return tags
 
-    def _state_label(self, st: State):
-
-        if st == State.ALIGN:
-            return "align"
-
-        if st == State.DRIVE:
-            return "drive"
-
-        if st == State.SEARCH:
-            return "search"
-
-        if st == State.AVOID:
-            return "avoid"
-
-        if st == State.GO_HOME:
-            return "go_home"
-
-        return str(st)
+    def _state_label(self, st: State) -> str:
+        labels = {
+            State.SEARCH: "search",
+            State.ALIGN: "align",
+            State.DRIVE: "drive",
+            State.AVOID: "avoid",
+            State.GO_HOME: "go_home",
+        }
+        return labels.get(st, str(st))
 
     # --------------------------------
     # Main Loop
@@ -246,17 +253,12 @@ class BrainNode(Node):
 # --------------------------------
 
 def main(args=None):
-
     rclpy.init(args=args)
-
     node = BrainNode()
-
     try:
         rclpy.spin(node)
-
     except KeyboardInterrupt:
         pass
-
     finally:
         node.destroy_node()
         rclpy.shutdown()

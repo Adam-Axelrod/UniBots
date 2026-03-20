@@ -7,11 +7,7 @@ import math
 from enum import Enum, auto
 from typing import Any, Optional
 
-from .april import (
-    ZONE_TAG_RANGES,
-    get_home_center_tag_ids,
-    wall_from_tag_id,
-)
+from .april import ZONE_TAG_RANGES, get_home_center_tag_ids
 from .command import Command
 from .world_model import WorldModel, AprilTagInfo
 
@@ -36,11 +32,17 @@ class GoHomePhase(Enum):
     PARK_PARALLEL = auto()
 
 
-class GoHomeState:
+class _State:
     def __init__(self):
         self.phase = GoHomePhase.TURN_TO_HOME
-        self.turn_start_heading: Optional[float] = None
-        self.last_tags_seen_s: Optional[float] = None
+
+
+_state = _State()
+
+
+def reset() -> None:
+    """Call when transitioning to GO_HOME to reset phase."""
+    _state.phase = GoHomePhase.TURN_TO_HOME
 
 
 def _facing_wall(tags: list[AprilTagInfo], home_wall: str) -> bool:
@@ -50,13 +52,6 @@ def _facing_wall(tags: list[AprilTagInfo], home_wall: str) -> bool:
         if target_lo <= t.tag_id <= target_hi:
             return True
     return False
-
-
-def _wall_from_tags(tags: list[AprilTagInfo]) -> Optional[str]:
-    """Infer which wall we're facing from visible tag IDs."""
-    if not tags:
-        return None
-    return wall_from_tag_id(tags[0].tag_id)
 
 
 def _turn_toward_home(
@@ -98,53 +93,47 @@ def _wall_angle_deg(tags: list[AprilTagInfo]) -> Optional[float]:
     return math.degrees(math.atan2(dy, dx))
 
 
-def update(
-    wm: WorldModel,
-    params: Any,
-    state: GoHomeState,
-) -> Command:
+def update(wm: WorldModel, params: Any) -> Command:
     """
     Single entry point for go-home. Returns command for current phase.
+    State is internal; call reset() when entering GO_HOME.
     """
     tags = wm.april_tags or []
     range_cm = wm.range_cm
     heading = wm.heading_deg
     home_wall = wm.home_wall
 
-    if tags:
-        state.last_tags_seen_s = wm.now_s
-
     # ----- TURN_TO_HOME -----
-    if state.phase == GoHomePhase.TURN_TO_HOME:
+    if _state.phase == GoHomePhase.TURN_TO_HOME:
         if _facing_wall(tags, home_wall):
-            state.phase = GoHomePhase.NAVIGATE
+            _state.phase = GoHomePhase.NAVIGATE
             return Command(0.0, 0.0)
         return _turn_toward_home(tags, heading, home_wall, params)
 
     # ----- NAVIGATE -----
-    if state.phase == GoHomePhase.NAVIGATE:
+    if _state.phase == GoHomePhase.NAVIGATE:
         if not _facing_wall(tags, home_wall):
             return _turn_toward_home(tags, heading, home_wall, params)
         if range_cm is not None and range_cm < params.NAV_CLOSE_CM:
-            state.phase = GoHomePhase.CENTER
+            _state.phase = GoHomePhase.CENTER
             return Command(0.0, 0.0)
         return Command(params.GO_HOME_NAV_SPEED, 0.0)
 
     # ----- CENTER -----
-    if state.phase == GoHomePhase.CENTER:
+    if _state.phase == GoHomePhase.CENTER:
         offset = _center_offset(tags, home_wall)
         if offset is None:
             return _turn_toward_home(tags, heading, home_wall, params)
         if abs(offset) < params.CENTER_EPSILON_PX:
             if range_cm is not None and range_cm < params.PARK_CLOSE_CM:
-                state.phase = GoHomePhase.PARK_PARALLEL
+                _state.phase = GoHomePhase.PARK_PARALLEL
                 return Command(0.0, 0.0)
             return Command(params.GO_HOME_NAV_SPEED, 0.0)
         speed = params.GO_HOME_TURN_SPEED if offset > 0 else -params.GO_HOME_TURN_SPEED
         return Command(0.0, speed)
 
     # ----- PARK_PARALLEL -----
-    if state.phase == GoHomePhase.PARK_PARALLEL:
+    if _state.phase == GoHomePhase.PARK_PARALLEL:
         angle = _wall_angle_deg(tags)
         if angle is None:
             return Command(0.0, 0.0)

@@ -47,7 +47,6 @@ class AprilTagDetector:
     """Detects AprilTags (36h11). Filters to home_zone if set; else all tags (0-23)."""
 
     def __init__(self, home_zone: str | None = None):
-        self._home_zone = home_zone
         if home_zone is None or home_zone == "all":
             self._tag_min, self._tag_max = 0, 23
         else:

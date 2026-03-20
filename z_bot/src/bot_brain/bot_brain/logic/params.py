@@ -4,6 +4,12 @@
 RUN_TIME_S = 180.0  # 3 minutes
 
 # =========================
+# Debug / Testing
+# =========================
+# Starting FSM state for quick testing: "search", "align", "drive", "avoid", "go_home"
+STARTING_STATE = "search"
+
+# =========================
 # Avoidance (highest priority)
 # =========================
 AVOID_DISTANCE_CM = 25.0
