@@ -5,6 +5,7 @@ from typing import Optional, Tuple
 from .world_model import WorldModel
 from .command import Command
 from . import params
+from . import go_home
 
 STOP = Command(0.0, 0.0)
 
@@ -26,6 +27,7 @@ class State(Enum):
     ALIGN = auto()
     DRIVE = auto()
     AVOID = auto()
+    GO_HOME = auto()
 
 
 class SearchPhase(Enum):
@@ -42,7 +44,11 @@ class BrainFSM:
 
     def __init__(self):
         self.state = State.SEARCH
+        self.state_before_avoid: Optional[State] = None
         self.last_cluster_seen_s: Optional[float] = None
+
+        # Go-home state (phase machine)
+        self.go_home_state = go_home.GoHomeState()
 
         # AVOID turn tracking
         self.turning = False
@@ -73,8 +79,10 @@ class BrainFSM:
         self.search_pause_end_s = None
 
     def update(self, wm: WorldModel) -> Tuple[State, Command]:
-        # Obstacle check: trigger AVOID from any state (except future PARK where it triggers stop)
+        # Obstacle check: trigger AVOID from any state
         if _obstacle_detected(wm.range_cm):
+            if self.state != State.AVOID:
+                self.state_before_avoid = self.state
             self.state = State.AVOID
             self.turning = False
 
@@ -86,6 +94,7 @@ class BrainFSM:
             State.ALIGN: self._update_align,
             State.DRIVE: self._update_drive,
             State.AVOID: self._update_avoid,
+            State.GO_HOME: self._update_go_home,
         }
         return handlers.get(self.state, self._fallback)(wm)
 
@@ -153,7 +162,12 @@ class BrainFSM:
         if not _obstacle_detected(wm.range_cm):
             self.turning = False
             self._reset_search_phase()
-            self.state = State.SEARCH
+            if wm.should_go_home:
+                self.state = State.GO_HOME
+                self.enter_go_home()
+            else:
+                self.state = self.state_before_avoid or State.SEARCH
+            self.state_before_avoid = None
             return self.state, STOP
 
         # Start turn once
@@ -203,6 +217,16 @@ class BrainFSM:
             return self.state, STOP
 
         return self.state, Command(params.DRIVE_SPEED, 0.0)
+
+    def _update_go_home(self, wm: WorldModel) -> Tuple[State, Command]:
+        cmd = go_home.update(wm, params, self.go_home_state)
+        return self.state, cmd
+
+    def enter_go_home(self) -> None:
+        """Call when transitioning to GO_HOME to reset phase state."""
+        self.go_home_state.phase = go_home.GoHomePhase.TURN_TO_HOME
+        self.go_home_state.turn_start_heading = None
+        self.go_home_state.last_tags_seen_s = None
 
     def _fallback(self, wm: WorldModel) -> Tuple[State, Command]:
         self.state = State.SEARCH

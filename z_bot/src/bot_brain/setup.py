@@ -30,6 +30,7 @@ setup(
         'yolo = bot_brain.inputs.yolo_run:main',
         'imu = bot_brain.inputs.imu_run:main',
         'motor = bot_brain.outputs.motor_run:main',
+        'april = bot_brain.inputs.april_run:main',
         ],
     },
 )

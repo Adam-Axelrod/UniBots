@@ -61,3 +61,14 @@ SEARCH_TURN_CHUNK_DEG = 15.0
 SEARCH_TURN_SPEED = 0.3
 SEARCH_TURN_PAUSE_S = 0.8
 SEARCH_FORWARD_SPEED = 0.2
+
+# =========================
+# Go-Home (AprilTag-based)
+# =========================
+GO_HOME_TRIGGER_S = 30.0  # Start go-home this many seconds before RUN_TIME_S
+NAV_CLOSE_CM = 30.0  # Switch from NAVIGATE to CENTER when this close to wall
+PARK_CLOSE_CM = 10.0  # Switch to PARK_PARALLEL when this close
+GO_HOME_NAV_SPEED = 0.5  # Forward speed during NAVIGATE
+GO_HOME_TURN_SPEED = 0.3  # Turn speed when re-acquiring or turning to home
+CENTER_EPSILON_PX = 20.0  # Consider centered when offset < this (image px)
+PARALLEL_EPSILON_DEG = 5.0  # Consider parallel when angle error < this
