@@ -2,7 +2,7 @@
 
 import rclpy
 from rclpy.node import Node
-from std_msgs.msg import Int32
+from std_msgs.msg import Float32
 
 import board
 import busio
@@ -10,12 +10,11 @@ import adafruit_vl53l0x
 
 
 class TOFNode(Node):
-
     def __init__(self):
-        super().__init__('tof_node')
+        super().__init__("tof_node")
 
-        # Publisher
-        self.pub = self.create_publisher(Int32, '/sensors/range', 10)
+        # Publisher (FLOAT, in cm)
+        self.pub = self.create_publisher(Float32, "/sensors/range", 10)
 
         # Init I2C + TOF sensor
         try:
@@ -29,7 +28,7 @@ class TOFNode(Node):
         # Timer (10 Hz)
         self.timer = self.create_timer(0.1, self.publish_distance)
 
-        # Simple filter
+        # Moving average filter
         self.history = []
         self.window_size = 5
 
@@ -39,25 +38,28 @@ class TOFNode(Node):
             return
 
         try:
-            dist = self.tof.range  # mm
+            dist_mm = self.tof.range  # mm
 
             # Ignore garbage values
-            if dist == 0 or dist > 2000:
+            if dist_mm == 0 or dist_mm > 2000:
                 return
 
-            # Moving average filter
-            self.history.append(dist)
+            # Moving average
+            self.history.append(dist_mm)
             if len(self.history) > self.window_size:
                 self.history.pop(0)
 
-            avg_dist = int(sum(self.history) / len(self.history))
+            avg_mm = sum(self.history) / len(self.history)
+
+            # ✅ Convert to cm
+            dist_cm = avg_mm / 10.0
 
             # Publish
-            msg = Int32()
-            msg.data = avg_dist
+            msg = Float32()
+            msg.data = dist_cm
             self.pub.publish(msg)
 
-            self.get_logger().info(f"TOF: {avg_dist} mm")
+            self.get_logger().info(f"TOF: {dist_cm:.2f} cm")
 
         except Exception as e:
             self.get_logger().warn(f"Read error: {e}")
@@ -77,5 +79,5 @@ def main(args=None):
     rclpy.shutdown()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

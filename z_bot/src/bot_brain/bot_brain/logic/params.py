@@ -9,11 +9,13 @@ RUN_TIME_S = 180.0  # 3 minutes
 AVOID_DISTANCE_CM = 25.0
 # TODO: future - hysteresis when re-entering after avoid
 AVOID_CLEAR_HYST_CM = 7.0
-# TODO: future - turn left vs right option
-AVOID_TURN_RIGHT = True
 # TODO: future - backup before turning when very close
 AVOID_BACKUP_CM = 15.0
 AVOID_BACKUP_SPEED = 0.5
+# Avoid turn angular speed (positive = right)
+AVOID_TURN_SPEED = 0.4
+# Degrees to turn before exiting AVOID (90 = quarter turn)
+AVOID_TURN_ANGLE_DEG = 90.0
 
 # =========================
 # Align / Drive
@@ -42,6 +44,10 @@ ALIGN_LOST_GRACE_S = 0.6  # Used by FSM
 
 # TODO: future - align turn rate when wiring ALIGN_SPEED scaling
 ALIGN_TURN_RATE = 0.25
+# Drive forward speed when pursuing cluster
+DRIVE_SPEED = 0.8
+# Align angular speed when centering on cluster
+ALIGN_SPEED = 2.0
 
 # =========================
 # Active SEARCH (lawn-mower)
@@ -55,12 +61,3 @@ SEARCH_TURN_CHUNK_DEG = 15.0
 SEARCH_TURN_SPEED = 0.3
 SEARCH_TURN_PAUSE_S = 0.8
 SEARCH_FORWARD_SPEED = 0.2
-
-# Avoid turn angular speed (positive = right)
-AVOID_TURN_SPEED = 0.4
-
-# Drive forward speed when pursuing cluster
-DRIVE_SPEED = 0.8
-
-# Align angular speed when centering on cluster
-ALIGN_SPEED = 2.0

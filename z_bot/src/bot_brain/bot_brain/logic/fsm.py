@@ -77,7 +77,6 @@ class BrainFSM:
         if _obstacle_detected(wm.range_cm):
             self.state = State.AVOID
             self.turning = False
-            return self.state, STOP
 
         if wm.cluster is not None:
             self.last_cluster_seen_s = wm.now_s
@@ -150,6 +149,13 @@ class BrainFSM:
         return self.state, Command(params.SEARCH_FORWARD_SPEED, 0.0)
 
     def _update_avoid(self, wm: WorldModel) -> Tuple[State, Command]:
+        # Early exit when obstacle clears
+        if not _obstacle_detected(wm.range_cm):
+            self.turning = False
+            self._reset_search_phase()
+            self.state = State.SEARCH
+            return self.state, STOP
+
         # Start turn once
         if not self.turning:
             self.turning = True
@@ -157,15 +163,15 @@ class BrainFSM:
 
         if wm.heading_deg is not None and self.turn_start_heading is not None:
             delta = _normalize_angle_diff(wm.heading_deg, self.turn_start_heading)
-            if abs(delta) < 90:
-                return self.state, Command(0.0, -params.AVOID_TURN_SPEED)
+            if abs(delta) < params.AVOID_TURN_ANGLE_DEG:
+                return self.state, Command(0.0, params.AVOID_TURN_SPEED)
 
             self.turning = False
             self._reset_search_phase()
             self.state = State.SEARCH
             return self.state, STOP
 
-        return self.state, Command(0.0, -params.AVOID_TURN_SPEED)
+        return self.state, Command(0.0, params.AVOID_TURN_SPEED)
 
     def _update_align(self, wm: WorldModel) -> Tuple[State, Command]:
         if wm.cluster is None:
