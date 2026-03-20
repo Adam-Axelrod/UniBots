@@ -71,9 +71,10 @@ SEARCH_FORWARD_SPEED = 0.2
 # =========================
 # Go-Home (AprilTag-based)
 # =========================
+MIN_MOTOR_SPEED = 0.15  # Motor doesn't respond below this; clamp non-zero speeds
 GO_HOME_TRIGGER_S = 30.0  # Start go-home this many seconds before RUN_TIME_S
 NAV_CLOSE_CM = 30.0  # Switch from NAVIGATE to CENTER when this close to wall
-PARK_CLOSE_CM = 10.0  # Switch to PARK_PARALLEL when this close
+PARK_CLOSE_CM = 10.0  # Stop APPROACH_WALL when this close
 GO_HOME_NAV_SPEED = 0.5  # Forward speed during NAVIGATE
 GO_HOME_TURN_SPEED = 0.3  # Turn speed when re-acquiring or turning to home
 CENTER_EPSILON_PX = 20.0  # Consider centered when offset < this (image px)
