@@ -10,5 +10,9 @@ __pycache__/
 **/install/
 **/log/
 
+# Core dump files
+core
+**/core
+
 # Keep this dependency as its own repository (not a submodule in this repo)
 yahboomcar_ws/src/robot_localization/
