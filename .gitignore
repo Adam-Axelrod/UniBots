@@ -4,3 +4,11 @@
 __pycache__/
 **/__pycache__/
 *.pyc
+
+# ROS/colcon generated artifacts
+**/build/
+**/install/
+**/log/
+
+# Keep this dependency as its own repository (not a submodule in this repo)
+yahboomcar_ws/src/robot_localization/
